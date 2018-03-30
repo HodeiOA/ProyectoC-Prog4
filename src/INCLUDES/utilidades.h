@@ -12,6 +12,6 @@
 	void recogerNick (char** punt_nick);
 	void recogerInt (int* punt_numero);
 	int recogerRespuesta (char respuesta);
-
+	void clear_if_needed(char *str);
 
 #endif

@@ -1,7 +1,8 @@
 #include "utilidades.h"
 
+#define MAX_NOMBRE 20
 
-void mostratMensaje(char * str)
+void mostratMensaje(char* str)
 {
 	printf("%s",str );
 }
@@ -34,7 +35,16 @@ void mensajeEmpate(t_jugador* empatados)//Recibe una lista con los jugadores que
 // Al usar los siguientes métodos, como parámetro pasar &variable--------------
 void recogerString (char** punt_string)
 {
-	scanf("%s", punt_string);
+	char str[MAX_NOMBRE];
+	char str_sin_salto_linea[];
+	fgets(str, MAX_NOMBRE, stdin);
+
+	clear_if_needed(str);
+	sscanf(str, "%s", str_sin_salto_linea); //eliminar el \n final
+
+	//reservar solo el espacio necesario para el string
+    (*punt_string) = (char *)malloc((strlen(str_sin_salto_linea) + 1) * sizeof(char)); //Le ponemos +1 para dejar espacio al \0
+    strcpy((*punt_string), str_sin_salto_linea );
 }
 
 void recogerNick (char** punt_nick)
@@ -63,4 +73,17 @@ int recogerRespuesta (char respuesta)
 		error=-1;
 	}
 	return error;
+}
+
+/**
+	Esta funcion elimina los caracteres pendientes si es necesario
+	Se usa junto con fgets para leer la entrada hasta cierta longitud
+*/
+void clear_if_needed(char *str)
+{
+	if (str[strlen(str) - 1] != '\n')
+	{
+		int c;    
+    	while ( (c = getchar()) != EOF && c != '\n');
+    }
 }
