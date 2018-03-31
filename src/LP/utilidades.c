@@ -56,8 +56,11 @@ void recogerNick (char** punt_nick)
 
 void recogerInt (int* punt_numero)
 {
-	scanf("%i",punt_numero);
+	char str[1000];
+	fgets(str, 1000, stdin);
+	sscanf(str, "%d", punt_numero); //eliminar el \n final
 }
+
 
 /*
 El método recibe la variable en la que guardaremos el resultado introducido por el usuario (a, b o c, ya que todas las preguntas tendrán tres opciones)
