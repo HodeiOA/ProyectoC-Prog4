@@ -1,30 +1,35 @@
 //#include "jugador.h"
-#include "utilidades.h"
-//#include "operaciones.h"
-//#include "preguntas_respuestas.h"
-//#include "data.h"
+//#include "Pregunta_Respuesta.h"
+#include "utilidades.h" //Al ponerlo en el proyecto, pone INCLUDES/utilidades.h
 #include <string.h>
+//#include <stdio.h>
 //Declaración de métodos
 void menuAdmin();
 void menuJugador();
+void individual();
+void multijugador();
+void ranking();
 
 int main(int argc, char** argv)
 {
-	//Para comparar los strings, usamos strcmp
-	int admin;
-	admin=strcmp(argv[1],"admin");
 	//-----------Decidir si es un jugador o es un administrador
 	//es un administrador
-  if (argc==2 && admin==0)
+  if (argc==2)
   {
-  			menuAdmin();
+  	//Para comparar los strings, usamos strcmp
+	int admin;
+	admin=strcmp(argv[1],"admin");
+
+		if (admin==0)
+		{
+			menuAdmin();
+		}	
   }
   else //es un jugador
   {
   	//Antes de mostrar el menú, como es la primera vez, hacemos que se identifique
-  	char* nick;
-
-  	recogerNick(&nick);
+  //	char* nick;
+  	//recogerNick(&nick);
     menuJugador();
     //asignarle nick al jugador
   }
@@ -100,5 +105,62 @@ int main(int argc, char** argv)
 
  void menuJugador()
  {
-  
+ 	int opcion;
+
+ 	 mostratMensaje("----MENÚ----\n"); 
+ 	 mostratMensaje("Por favor, elije una de las siguientes opciones:\n"); 
+ 	 mostratMensaje("\t 1.- Jugar partida individual\n"); 
+ 	 mostratMensaje("\t 2.- Jugar partida multihugador\n"); 
+ 	 mostratMensaje("\t 3.- Ver ránking\n"); 
+ 	 mostratMensaje("\t 4.- Salir \n"); 
+ 	 mostratMensaje("Indica el número de la opción que quieres elegir\n"); 
+ 
+  	recogerInt (&opcion);
+
+	while(!(opcion>0 && opcion<5))
+  	{
+  		mostratMensaje("Opción no válida. Por favor, indica el número de la opción que quieres elegir\n"); 
+  		recogerInt (&opcion);
+  	}
+
+  	switch(opcion)
+  	{
+  		case 1: 
+  		mostratMensaje("Has elegido la opción número 1: Jugar partida individual \n"); 
+  		individual();
+  		break;
+
+  		case 2:
+  		mostratMensaje("Has elegido la opción número 2: Jugar partida multijugador \n"); 
+  		multijugador();
+  		break;
+
+  		case 3:
+  		mostratMensaje("Has elegido la opción número 3: Ver ránking\n"); 
+  		ranking();
+  		break;
+
+  		case 4:
+  		mostratMensaje("Gracias por jugar ¡Vuelve pronto!\n"); 
+  		exit(0);
+  		break;
+
+  		default:
+  		break;
+  	}
+ }
+
+ void individual()
+ {
+
+ }
+
+ void multijugador()
+ {
+
+ }
+
+ void ranking()
+ {
+
  }
