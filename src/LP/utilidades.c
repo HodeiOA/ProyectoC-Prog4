@@ -1,6 +1,5 @@
 #include "utilidades.h"
 
-#define MAX_NOMBRE 20
 
 void mostratMensaje(char* str)
 {
@@ -33,11 +32,11 @@ void mensajeEmpate(t_jugador* empatados)//Recibe una lista con los jugadores que
 */
 
 // Al usar los siguientes métodos, como parámetro pasar &variable--------------
-void recogerString (char** punt_string)
+void recogerString (char** punt_string, int max_long)
 {
-	char str[MAX_NOMBRE];
+	char str[max_long];
 	char str_sin_salto_linea[];
-	fgets(str, MAX_NOMBRE, stdin);
+	fgets(str, max_long, stdin);
 
 	clear_if_needed(str);
 	sscanf(str, "%s", str_sin_salto_linea); //eliminar el \n final
@@ -50,7 +49,7 @@ void recogerString (char** punt_string)
 void recogerNick (char** punt_nick)
 {
 	printf("Indica el nick del jugador: \n");
-	recogerString(punt_nick);
+	recogerString(punt_nick, 20);//los nicks tendrán un máximo de 20 caracteres
 }
 
 void recogerInt (int* punt_numero)
@@ -84,6 +83,6 @@ void clear_if_needed(char *str)
 	if (str[strlen(str) - 1] != '\n')
 	{
 		int c;    
-    	while ( (c = getchar()) != EOF && c != '\n');
+    	while ( (c = getchar()) != EOF && c != '\n');//Como leemos de teclado, usamos getchar (de fichero fgetc)
     }
 }

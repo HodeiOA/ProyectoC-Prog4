@@ -8,7 +8,7 @@
 	//void mostrarPregunta(t_pregunta_respuesta preg);
 	//void mensajeGanador(t_jugador ganador);
 	//void mensajeEmpate(t_jugador* empatados);
-	void recogerString (char** punt_string);
+	void recogerString (char** punt_string, int max_long);
 	void recogerNick (char** punt_nick);
 	void recogerInt (int* punt_numero);
 	int recogerRespuesta (char respuesta);
