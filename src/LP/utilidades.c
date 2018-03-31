@@ -5,11 +5,10 @@ void mostratMensaje(char* str)
 {
 	printf("%s",str );
 }
-/*
-//Estos métodos habrá que ver si compilan cuando estén las estructuras hechas, los demás compilan
-void mostrarPregunta(t_pregunta_respuesta preg)
+//--Compilan, pero habrá que probarlos cuando sus clases estén hechas
+void mostrarPregunta(t_pregunta_respuestas preg)
 {
-	printf("%s", preg.pregunta);
+	printf("%s", preg.Pregunta);
 }
 
 void mensajeGanador(t_jugador ganador) //A este método se le llamará antes de actualizar las puntuaciones, con lo que la puntuación será la acumulada en esa partida
@@ -20,16 +19,17 @@ void mensajeGanador(t_jugador ganador) //A este método se le llamará antes de 
 void mensajeEmpate(t_jugador* empatados)//Recibe una lista con los jugadores que han empatado
 {
 	char* nicks_empate;
+	int cant_empatados=sizeof(empatados)/sizeof(empatados[0]);
 
-	printf("Se ha producido un empate entre %i jugadores con %i puntos ", strlen(empatados), empatados[0].puntuacion);
+	printf("Se ha producido un empate entre %i jugadores con %i puntos ", cant_empatados , empatados[0].puntuacion);
 
-	for(int i=0; i < strlen(empatados); i++ )
+	for(int i=0; i < cant_empatados; i++ )
 	{
 		printf("%s\n", empatados[i]);
 	}
 	printf("Si deseas desempatar pulsa 1\nSi deseas finalizar la partida con empate pulsa 2\n");
 }
-*/
+//-----------------------------------------------------------------
 
 // Al usar los siguientes métodos, como parámetro pasar &variable--------------
 void recogerString (char** punt_string, int max_long)
