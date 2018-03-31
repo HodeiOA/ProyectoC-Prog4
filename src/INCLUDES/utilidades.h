@@ -5,7 +5,7 @@
 	#include <stdio.h>
 	#include <stdlib.h>
 
-	void mostratMensaje(char * str); //bien
+	void mostrarMensaje(char * str); //bien
 	//Descomentar y probar cuando se hayan hecho las estructuras
 	//void mostrarPregunta(t_pregunta_respuesta preg);
 	//void mensajeGanador(t_jugador ganador);

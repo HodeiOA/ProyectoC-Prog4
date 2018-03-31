@@ -1,7 +1,7 @@
 #include "utilidades.h"
 
 
-void mostratMensaje(char* str)
+void mostrarMensaje(char* str)
 {
 	printf("%s",str );
 }

@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 
  void menuAdmin()
  {
- 	 mostratMensaje("Hola, administrador\n"); 
+ 	 mostrarMensaje("Hola, administrador\n"); 
  	/*
   	//Todo irá dentro de un do-while, ya que al menos una vez se realizará y según lo el valor que le dé a la variable "opción" saldrá o no del bucle
   	int opcion;
@@ -107,41 +107,41 @@ int main(int argc, char** argv)
  {
  	int opcion;
 
- 	 mostratMensaje("----MENÚ----\n"); 
- 	 mostratMensaje("Por favor, elije una de las siguientes opciones:\n"); 
- 	 mostratMensaje("\t 1.- Jugar partida individual\n"); 
- 	 mostratMensaje("\t 2.- Jugar partida multihugador\n"); 
- 	 mostratMensaje("\t 3.- Ver ránking\n"); 
- 	 mostratMensaje("\t 4.- Salir \n"); 
- 	 mostratMensaje("Indica el número de la opción que quieres elegir\n"); 
+ 	 mostrarMensaje("----MENÚ----\n"); 
+ 	 mostrarMensaje("Por favor, elije una de las siguientes opciones:\n"); 
+ 	 mostrarMensaje("\t 1.- Jugar partida individual\n"); 
+ 	 mostrarMensaje("\t 2.- Jugar partida multihugador\n"); 
+ 	 mostrarMensaje("\t 3.- Ver ránking\n"); 
+ 	 mostrarMensaje("\t 4.- Salir \n"); 
+ 	 mostrarMensaje("Indica el número de la opción que quieres elegir\n"); 
  
   	recogerInt (&opcion);
 
 	while(!(opcion>0 && opcion<5))
   	{
-  		mostratMensaje("Opción no válida. Por favor, indica el número de la opción que quieres elegir\n"); 
+  		mostrarMensaje("Opción no válida. Por favor, indica el número de la opción que quieres elegir\n"); 
   		recogerInt (&opcion);
   	}
 
   	switch(opcion)
   	{
   		case 1: 
-  		mostratMensaje("Has elegido la opción número 1: Jugar partida individual \n"); 
+  		mostrarMensaje("Has elegido la opción número 1: Jugar partida individual \n"); 
   		individual();
   		break;
 
   		case 2:
-  		mostratMensaje("Has elegido la opción número 2: Jugar partida multijugador \n"); 
+  		mostrarMensaje("Has elegido la opción número 2: Jugar partida multijugador \n"); 
   		multijugador();
   		break;
 
   		case 3:
-  		mostratMensaje("Has elegido la opción número 3: Ver ránking\n"); 
+  		mostrarMensaje("Has elegido la opción número 3: Ver ránking\n"); 
   		ranking();
   		break;
 
   		case 4:
-  		mostratMensaje("Gracias por jugar ¡Vuelve pronto!\n"); 
+  		mostrarMensaje("Gracias por jugar ¡Vuelve pronto!\n"); 
   		exit(0);
   		break;
 
