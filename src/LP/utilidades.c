@@ -59,22 +59,23 @@ void recogerInt (int* punt_numero)
 	scanf("%i",punt_numero);
 }
 
-//-----------------------------
 /*
 El método recibe la variable en la que guardaremos el resultado introducido por el usuario (a, b o c, ya que todas las preguntas tendrán tres opciones)
 Devolverá un int indicando si la opción introducida concuerda con alguna de las tres letras (0: si es una respuesta posible, -1: si es una respuesta no posible)
 */
-int recogerRespuesta (char respuesta) 
+int recogerRespuesta (char* respuesta) 
 {
 	int error=0;
-	scanf("%c",&respuesta);
-	if(respuesta!='a' && respuesta!='b' && respuesta!='c') 
+	scanf(" %c", respuesta);//El espacio es para evitar saltos de línea
+	if(*respuesta!='a' && *respuesta!='b' && *respuesta!='c') 
 	{
 		printf("La respuesta no es válida. Por favor, introduce una opción válida (a, b o c) \n");
 		error=-1;
 	}
 	return error;
 }
+
+//-----------------------------
 
 /**
 	Esta funcion elimina los caracteres pendientes si es necesario
