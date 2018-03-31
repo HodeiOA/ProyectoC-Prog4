@@ -35,15 +35,17 @@ void mensajeEmpate(t_jugador* empatados)//Recibe una lista con los jugadores que
 void recogerString (char** punt_string, int max_long)
 {
 	char str[max_long];
-	char str_sin_salto_linea[];
+	char str_sin_salto_linea[max_long];
 	fgets(str, max_long, stdin);
 
 	clear_if_needed(str);
 	sscanf(str, "%s", str_sin_salto_linea); //eliminar el \n final
 
 	//reservar solo el espacio necesario para el string
-    (*punt_string) = (char *)malloc((strlen(str_sin_salto_linea) + 1) * sizeof(char)); //Le ponemos +1 para dejar espacio al \0
+    (*punt_string) = (char *)malloc((strlen(str_sin_salto_linea)) * sizeof(char)); //El último espacio será para el \0
     strcpy((*punt_string), str_sin_salto_linea );
+    //Esta línea no va y no sé por qué
+  //	(*punt_string)[strlen(str_sin_salto_linea)-1] ="\0"; //Le ponemos \0 al final para que sea un string
 }
 
 void recogerNick (char** punt_nick)

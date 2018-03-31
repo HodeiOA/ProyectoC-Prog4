@@ -3,6 +3,7 @@
 
 	#include <string.h>
 	#include <stdio.h>
+	#include <stdlib.h>
 
 	void mostratMensaje(char * str);
 	//void mostrarPregunta(t_pregunta_respuesta preg);
