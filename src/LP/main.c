@@ -40,19 +40,22 @@ int main(int argc, char** argv)
  void menuAdmin()
  {
  	 mostrarMensaje("Hola, administrador\n"); 
- 	/*
+
   	//Todo irá dentro de un do-while, ya que al menos una vez se realizará y según lo el valor que le dé a la variable "opción" saldrá o no del bucle
-  	int opcion;
-  	do
+  	int opcion=0;
+
+   do
   	{
 	  	int cant_p;//cantidad de preguntas que va a insertar el administrador
-	  	t_pregunta_respuestas preg_r;
+	  	int MAX_PREG = 250;
+	  	int MAX_RESP = 200;
 
-	    mostrarMensaje("Indica la cantidad de preguntas que deseas introducir");
+		mostrarMensaje("Indica la cantidad de preguntas que deseas introducir:  ");
 	    recogerInt(&cant_p); //en recoger int, añadir mensajes de error si no es un int
-	    while(cant_p<0)
+	   
+	    while(cant_p<=0)
 	    {
-	    	mostrarMensaje("El número de preguntas debe ser un número natural. Por favor, inténtalo de nuevo: \n");
+	    	mostrarMensaje("El número de preguntas debe ser superior a 0. Por favor, inténtalo de nuevo: \n");
 	    	recogerInt(&cant_p); 
 	    }
 
@@ -66,30 +69,28 @@ int main(int argc, char** argv)
 	    	 char* r2;
 	    	 char* r3;
 
-	    	 mostrarMensaje("Introduce la pregunta a insertar: ");
-	    	 recogerString(&pregunta);
+	    	mostrarMensaje("Introduce la pregunta a insertar: ");
+	    	recogerString(&pregunta, MAX_PREG);
+
+	    		
 	    	 mostrarMensaje("\n*La respuesta no debe contener la letra de la opción (a, b, c) ni signos de puntuación al inicio (salvo que se trate de un guión, por ser la respuesta un número negativo)");
 	    	 mostrarMensaje("\nIntroduce la respuesta correcta: ");
-	    	 recogerString(&correcta);
+	    	 recogerString(&correcta, MAX_RESP);
 
-	    	 //Hacemos un malloc para que el array tenga tandos caracteres como la respuesta correcta +2, uno para el punto y otro para \0
+	    	 //Hacemos un malloc para que el array tenga tandos caracteres como la respuesta correcta +1, para el punto y para el \0
 	    	 r1=(char*)malloc(strlen(correcta+2)*sizeof(char*));
 
-	    	 r1[0]=".";//Como es la respuesta correcta, la guardamos con un punto por delante
-	    	//Para guardar el resto de la respuesta, recorremos el string carácter a carácter y lo guardamos en r1
-		    	 for(int j=0; j<strlen(correcta); j++)
-		    	 {
-		    	 	r[j+1]=correcta[j];
-		    	 }
-		    r1[strlen(correcta)+1]=\0;
+	    	 r1[0]='.'; //Esto no funciona del todo bien. El punto aparece con otro signo <signo
+	    	 //Ponerle el punto delante a la respuesta correcta
+	    	 strcat(r1,correcta); 
 
 	    	 mostrarMensaje("\nIntroduce otra respuesta (una incorrecta): ");
-	    	 recogerString(&r2);
+	    	 recogerString(&r2, MAX_RESP);
 	    	 mostrarMensaje("\nIntroduce otra respuesta (una incorrecta): ");
-	    	 recogerString(&r3);
+	    	 recogerString(&r3, MAX_RESP);
 
 	    	 preg_r[i].Pregunta = pregunta;
-	    	 preg_r[i].Respuesta1 = r1
+	    	 preg_r[i].Respuesta1 = r1;
 	    	 preg_r[i].Respuesta2 = r2;
 	    	 preg_r[i].Respuesta3 = r3;
 	    }
@@ -99,8 +100,7 @@ int main(int argc, char** argv)
  		mostrarMensaje("\t2.- No\n");
  		recogerInt(&opcion);
 
-    }while (opcion!=2);
-*/
+	}while (opcion!=2);
  }
 
  void menuJugador()
