@@ -19,6 +19,11 @@ void mostrarRespuestas(t_pregunta_respuestas preg)
 	printf("Indica la repuesta que consideras correcta (a, b o c):  ");
 }
 
+void mostrarPuntuacion(t_jugador jugador)
+{
+	printf("%s : %i puntos\n", jugador.nick, jugador.puntuacion );
+}
+
 void mensajeGanador(t_jugador ganador) //A este método se le llamará antes de actualizar las puntuaciones, con lo que la puntuación será la acumulada en esa partida
 {
 	printf("El jugador ganador de esta partida ha sido %s con %i puntos. ¡Enhorabuena! \n", ganador.nick, ganador.puntuacion );
