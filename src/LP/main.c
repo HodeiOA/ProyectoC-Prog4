@@ -182,11 +182,16 @@ int main(int argc, char** argv)
  	int respValida=-1;
  	char respuesta;
 
+ 	int opcion; //Para la elección del final
+
+	//reamos al menos un hueco para ArrPreg
+  	arrPreg= (t_pregunta_respuestas*)malloc(sizeof(t_pregunta_respuestas)); //BOrrar esto cuando llamemos a data
+
  	//Leer todas las preguntas
  		//Llamar a data
  	//Cantidad de preguntas en cada array
  	sizePreguntasSalidas = sizeof(preguntasSalidas)/sizeof(t_pregunta_respuestas);
- 	sizeTotalPreguntas = sizeof(arrPregRes)/sizeof(t_pregunta_respuestas);
+ 	sizeTotalPreguntas = sizeof(arrPreg)/sizeof(t_pregunta_respuestas);
 
  	mostrarMensaje("\t Juego individual");
  	mostrarMensaje("¿Cuántas preguntas deseas que se te realicen?\t");
@@ -204,7 +209,7 @@ int main(int argc, char** argv)
 	 	do
 	 	{
 		 		random = rand() %(cant_preguntas); //genera un número aleatorio entre 0 y cant_preguntas-1
-		 		pregunta = arrPregR[random];
+		 		pregunta = arrPreg[random];
 
 		 		for(int j=0; j < sizePreguntasSalidas; i++)
 		 		{
@@ -212,7 +217,7 @@ int main(int argc, char** argv)
 		 		}
 		 	
 		 	cont++;
-	 	}while(repetida==0 || cont !=MAX_INTENTOS) //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
+	 	}while(repetida==0 || cont !=MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
 	 
 	 aux = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas)*sizePreguntasSalidas+1);//creamos espacio para las preguntas ya salidas +1 (la nueva)
 	//metemos todas las preguntas del array de los ya salidos en la variable auxiliar
@@ -242,9 +247,28 @@ int main(int argc, char** argv)
 	 }
 
 	 //LLAMAR AL MÉTODO DE OPERACIONES QUE COMPRUEBA SI LA RESPUESTA ES CORRECTA O NO
-
-
 	 }
+	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");
+	 mostrarMensaje("1.- Volver a jugar\n");
+	 mostrarMensaje("2.- Volver al menú\n");
+	 mostrarMensaje("Introduce la opción deseada:  ");
+	 recogerInt (&opcion);
+
+	 while(opcion != 1 && opcion != 2)
+	 {
+	 	 mostrarMensaje("\nLa opción introducida no es válida. Por favor, inténtalo de nuevo:  ");
+	 	 recogerInt (&opcion);
+	 }
+
+	 if(opcion = 1)
+	 {
+	 	individual();
+	 }
+	 else
+	 {
+	 	menuJugador();
+	 }
+
  }
 
  void multijugador()
