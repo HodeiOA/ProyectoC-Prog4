@@ -16,6 +16,9 @@ void acabar();
 t_jugador* jugadores;
 t_pregunta_respuestas* preguntasSalidas;
 
+//Si tras estos intentos de encontrar una pregunta que no haya salido aún no se consigue, se mostrará una aleatoria, sin importar si está repetida
+int MAX_INTENTOS=20 ;
+
 int main(int argc, char** argv)
 {
 	//-----------Decidir si es un jugador o es un administrador
@@ -174,8 +177,7 @@ int main(int argc, char** argv)
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	int sizePreguntasSalidas;
  	int sizeTotalPreguntas;
-	//Si tras estos intentos de encontrar una pregunta que no haya salido aún no se consigue, se mostrará una aleatoria, sin importar si está repetida
- 	#define int MAX_INTENTOS 20 
+	
  	int cont=0;
  	int respValida=-1;
  	char respuesta;
@@ -206,7 +208,7 @@ int main(int argc, char** argv)
 
 		 		for(int j=0; j < sizePreguntasSalidas; i++)
 		 		{
-		 			repetida = strcmp (pregunta.Pregunta,preguntasSalidas[i]); //si son iguales, será 0
+		 			repetida = strcmp (pregunta.Pregunta,preguntasSalidas[i].Pregunta); //si son iguales, será 0
 		 		}
 		 	
 		 	cont++;
