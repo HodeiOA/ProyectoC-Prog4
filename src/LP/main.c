@@ -80,7 +80,8 @@ int main(int argc, char** argv)
 	    	 //Hacemos un malloc para que el array tenga tandos caracteres como la respuesta correcta +1, para el punto y para el \0
 	    	 r1=(char*)malloc(strlen(correcta+2)*sizeof(char*));
 
-	    	 r1[0]='.'; //Esto no funciona del todo bien. El punto aparece con otro signo <signo
+	    	 r1[0]='.'; //Le ponemos a r1 el .
+	    	 r1[1]=0; //Para convertir la cadena de caracteres en String, le ponemos el 0 (o \0)
 	    	 //Ponerle el punto delante a la respuesta correcta
 	    	 strcat(r1,correcta); 
 
