@@ -1,4 +1,4 @@
-#include "utilidades.h"
+#include "INCLUDES/utilidades.h"
 
 
 void mostrarMensaje(char* str)
@@ -9,6 +9,14 @@ void mostrarMensaje(char* str)
 void mostrarPregunta(t_pregunta_respuestas preg)
 {
 	printf("%s", preg.Pregunta);
+}
+
+void mostrarRespuestas(t_pregunta_respuestas preg)
+{
+	printf("a) %s\n", preg.Respuesta1 );
+	printf("b) %s\n", preg.Respuesta2 );
+	printf("c) %s\n", preg.Respuesta3 );
+	printf("Indica la repuesta que consideras correcta (a, b o c):  ");
 }
 
 void mensajeGanador(t_jugador ganador) //A este método se le llamará antes de actualizar las puntuaciones, con lo que la puntuación será la acumulada en esa partida
