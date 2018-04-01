@@ -6,6 +6,7 @@
 	#include <stdlib.h>
 
 	void mostrarMensaje(char * str); //bien
+	void mostrarInt(int i);
 	//Descomentar y probar cuando se hayan hecho las estructuras
 	//void mostrarPregunta(t_pregunta_respuesta preg);
 	//void mostrarRespuestas(t_pregunta_respuestas preg);

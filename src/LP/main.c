@@ -276,9 +276,33 @@ int main(int argc, char** argv)
 
  }
 
- void ranking()
+  void ranking()
  {
+ 	t_jugador* jugadoresLeidos; //lista de todos los jugadores que ha habido en todas las partidas(no solo los de esta)
+ 	int sizeJugadoresLeidos;
+ 	int opcion;
+ 	//Llamar a data y leer todos los jugadores en el fichero
 
+ 	sizeJugadoresLeidos =  sizeof(jugadoresLeidos)/sizeof(t_jugador); //cantidad de jugadores en el fichero
+ 	ordenarJugadores(jugadoresLeidos, sizeJugadoresLeidos);
+
+ 	mostrarMensaje("RANKING DE JUGADORES");
+ 	for(int i=0; i<sizeJugadoresLeidos; i++)
+ 	{
+ 		mostrarInt(i);
+ 		mostrarMensaje(".-");
+ 		mostrarPuntuacion(jugadoresLeidos[i]);
+ 	}
+
+	 mostrarMensaje("Pulsa 1 para volver al menú\n");
+	 recogerInt (&opcion);
+
+	 while(opcion != 1)
+	 {
+	 	 mostrarMensaje("\nLa opción introducida no es válida. Por favor, inténtalo de nuevo:  ");
+	 	 recogerInt (&opcion);
+	 }
+	 menuJugador();
  }
 
  void acabar()//método para liberar recursos

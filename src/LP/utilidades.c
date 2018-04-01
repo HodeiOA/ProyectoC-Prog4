@@ -5,6 +5,12 @@ void mostrarMensaje(char* str)
 {
 	printf("%s",str );
 }
+
+void mostrarInt(int i)
+{
+	printf("%i",i );
+}
+
 //--Compilan, pero habrá que probarlos cuando sus clases estén hechas
 void mostrarPregunta(t_pregunta_respuestas preg)
 {
