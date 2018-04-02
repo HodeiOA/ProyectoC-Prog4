@@ -216,7 +216,11 @@ int main(int argc, char** argv)
 
 		 		for(int j=0; j < sizePreguntasSalidas; i++)
 		 		{
-		 			repetida = strcmp (pregunta.Pregunta,preguntasSalidas[i].Pregunta); //si son iguales, será 0
+		 			if(strcmp (pregunta.Pregunta,preguntasSalidas[i].Pregunta)==0)
+		 			{
+		 				repetida = 0; //si son iguales, será 0
+		 			}
+		 			
 		 		}
 		 	
 		 	cont++;
@@ -423,7 +427,10 @@ void multijugador()
 
 				 		for(int j=0; j < sizePreguntasSalidas; i++)
 				 		{
-				 			repetida = strcmp (pregunta.Pregunta,preguntasSalidas[i].Pregunta); //si son iguales, será 0
+				 			if(strcmp (pregunta.Pregunta,preguntasSalidas[i].Pregunta)==0)
+				 			{
+				 				repetida = 0; //si son iguales, será 0
+				 			}
 				 		}
 				 	cont++;
 			 	}while(repetida==0 || cont !=MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
