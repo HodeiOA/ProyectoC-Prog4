@@ -102,7 +102,7 @@ t_jugador* leerJugador(int* num_jugadores)
 
 void guardarPreguntaRespuestas(t_pregunta_respuestas PreguntasParaGuardar[], int numPreguntas)
 {
-  FILE* fichero = fopen("PreguntaRespuestas.dat", wb);  
+  FILE* fichero = fopen("PreguntaRespuestas.dat", "wb");  
 
   fputc(numPreguntas, fichero);
 
@@ -112,7 +112,7 @@ void guardarPreguntaRespuestas(t_pregunta_respuestas PreguntasParaGuardar[], int
 t_pregunta_respuestas* leerPreguntaRespuestas(int* numPreguntas)
 {
   t_pregunta_respuestas* PreguntasLeidas;
-  FILE* fichero = fopen("PreguntaRespuestas.dat", rb);
+  FILE* fichero = fopen("PreguntaRespuestas.dat", "rb");
 
   numPreguntas = fgetc(fichero);
 
