@@ -33,11 +33,11 @@ void prepararRespuestas(t_pregunta_respuestas* pregunta)
 		}
 	}
 
-	strcpy(respuestas[random[0]], pregunta.Respuesta1);
-	strcpy(respuestas[random[1]], pregunta.Respuesta2);
-	strcpy(respuestas[random[2]], pregunta.Respuesta3);
+	strcpy(respuestas[random[0]], (*pregunta).Respuesta1);
+	strcpy(respuestas[random[1]], (*pregunta).Respuesta2);
+	strcpy(respuestas[random[2]], (*pregunta).Respuesta3);
 
-	strcpy(pregunta.Respuesta1, respuestas[0]);
-	strcpy(pregunta.Respuesta2, respuestas[1]);
-	strcpy(pregunta.Respuesta3, respuestas[2]);
+	strcpy((*pregunta).Respuesta1, respuestas[0]);
+	strcpy((*pregunta).Respuesta2, respuestas[1]);
+	strcpy((*pregunta).Respuesta3, respuestas[2]);
 }
