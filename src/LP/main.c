@@ -323,7 +323,7 @@ void multijugador()
 					empatados[i] = multijugadores[i];
 				}
 	 		}
-	 		mensajeEmpate(empatados);
+	 		mensajeEmpate(empatados, sizeEmpatados);
 	 		recogerInt(&opcion);
 	 		
 	 		if(opcion ==1)

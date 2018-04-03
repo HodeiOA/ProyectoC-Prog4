@@ -36,14 +36,13 @@ void mensajeGanador(t_jugador ganador) //A este método se le llamará antes de 
 	printf("El jugador ganador de esta partida ha sido %s con %i puntos. ¡Enhorabuena! \n", ganador.nick, ganador.puntuacion );
 }
 
-void mensajeEmpate(t_jugador* empatados)//Recibe una lista con los jugadores que han empatado
+void mensajeEmpate(t_jugador* empatados, int sizeEmpatados)//Recibe una lista con los jugadores que han empatado
 {
 	char* nicks_empate;
-	int cant_empatados=sizeof(empatados)/sizeof(empatados[0]);
 
-	printf("Se ha producido un empate entre %i jugadores con %i puntos ", cant_empatados , empatados[0].puntuacion);
+	printf("Se ha producido un empate entre %i jugadores con %i puntos ", sizeEmpatados , empatados[0].puntuacion);
 
-	for(int i=0; i < cant_empatados; i++ )
+	for(int i=0; i < sizeEmpatados; i++ )
 	{
 		printf("%s\n", empatados[i]);
 	}
