@@ -14,18 +14,17 @@ void ranking();
 void acabar();
 void RealizarPreguntasMultijugador(t_jugador* multijugadores, int cantPreg, int cantJugadores);
 
-//Listas de Jugadores y preguntas que hayan ido saliendo
-t_jugador* jugadores;
+//Tamaños de las listas
+unsigned int sizeTotalPreguntas; //igualarlo a un método de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
+unsigned int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
+
 t_pregunta_respuestas* preguntasSalidas;
 //Lista de todas las preguntas
-t_pregunta_respuestas* arrPreg;//Llamar al método leer de data
+t_pregunta_respuestas* arrPreg = leerPreguntaRespuestas(&sizeTotalPreguntas);//Llamar al método leer de data
 
 //Jugador que inicia la partida
 t_jugador jugadorPrincipal;
 
-//Tamaños de las listas
-unsigned int sizeTotalPreguntas; //igualarlo a un método de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
-unsigned int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
 
 int main(int argc, char** argv)
 {
@@ -47,7 +46,7 @@ int main(int argc, char** argv)
   	//Antes de mostrar el menú, como es la primera vez, hacemos que se identifique
   	char* nick;
   	recogerNick(&nick);
- 	jugadorPrincipal.nick = nick;
+ 	crearJugador(nick);
 
     menuJugador();
     //asignarle nick al jugador
