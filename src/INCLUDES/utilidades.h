@@ -7,7 +7,7 @@
 
 	void mostrarMensaje(char * str); //bien
 	void mostrarInt(int i);
-	void mostrarPregunta(t_pregunta_respuesta preg);
+	void mostrarPregunta(t_pregunta_respuestas preg);
 	void mostrarRespuestas(t_pregunta_respuestas preg);
 	void mostrarPuntuacion(t_jugador jugador);
 	void mensajeGanador(t_jugador ganador);
