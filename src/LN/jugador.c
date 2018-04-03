@@ -20,7 +20,7 @@ void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 	t_jugador* listaJugadoresFich;
 	int numFich; // Lo enviamos como parámetro ampersand a leerJugadores() de data y así podemos recibir las dos cosas
 
-	listaJugadoresFich = leerJugadores(); // Editar nombre método correcto
+	listaJugadoresFich = leerJugador(&numFich); // Editar nombre método correcto
 
 	for(int i = 0; i < numFich; i++)
 	{
@@ -33,5 +33,5 @@ void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 		}
 	}
 
-	guardarJugadores(listaJugadoresFich); // Editar nombre método correcto
+	guardarJugadores(listaJugadoresFich, numFich); // Editar nombre método correcto
 }
