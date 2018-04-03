@@ -370,7 +370,8 @@ void multijugador()
  	char respuesta;
  	int random;//variable en la que guardaremos el número aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
- 	
+ 	t_pregunta_respuestas pregunta;
+
  	for(int i=0; i<cantPreg; i++)
  	{
  		for(int j=0; j<cantJugadores; j++)
