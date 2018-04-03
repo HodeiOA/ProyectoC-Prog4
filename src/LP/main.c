@@ -218,7 +218,20 @@ int main(int argc, char** argv)
 		 	 respValida = recogerRespuesta(&respuesta);
 		 }
 	 //LLAMAR AL MÉTODO DE OPERACIONES QUE COMPRUEBA SI LA RESPUESTA ES CORRECTA O NO
-		 respCorrecta = comprobarRespuesta(respuesta);
+		switch (respuesta)
+		{
+			case 'a':
+				respCorrecta = comprobarRespuesta(pregunta.Respuesta1);
+			break;
+
+			case 'b':
+				respCorrecta = comprobarRespuesta(pregunta.Respuesta2);
+			break;
+
+			case 'c':
+				respCorrecta = comprobarRespuesta(pregunta.Respuesta3);
+			break;
+		}
 
 		 if(respValida == 1)
 		 {
