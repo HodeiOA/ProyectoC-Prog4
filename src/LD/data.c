@@ -68,18 +68,14 @@ t_jugador* leerJugador(int* num_jugadores)
 
   while ((read = getline(&line, &len, f)) != -1) 
   {
- 	while((c = fgetc(line)) != ',')
+ 	for(int k = 0; k < strlen(line); k++)
  	{
- 		auxn[i] = c;
+ 		auxn[i] = line[i];
  		i++;
  	}
   for (int k = 0; k <strlen(line); k++)
  	{
- 		if(j>=i)
- 		{
- 			auxp[j-i] = c;
- 		}
-
+ 		auxp[j] = line[j-i];
  		j++;
  	}
     //cuando llegue ','' el string se lo asigno a la posición jugadores[cont].nick del array de jugadores que voy a devolver
@@ -111,14 +107,18 @@ void guardarPreguntaRespuestas(t_pregunta_respuestas PreguntasParaGuardar[], int
 
 t_pregunta_respuestas* leerPreguntaRespuestas(int* numPreguntas)
 {
+	int numElem;
+
   t_pregunta_respuestas* PreguntasLeidas;
   FILE* fichero = fopen("PreguntaRespuestas.dat", "rb");
 
-  numPreguntas = fgetc(fichero);
+  numElem = fgetc(fichero);
 
-  PreguntasLeidas = (t_pregunta_respuestas*) malloc(numPreguntas * sizeof(t_pregunta_respuestas));
+  PreguntasLeidas = (t_pregunta_respuestas*) malloc(numElem * sizeof(t_pregunta_respuestas));
 
-  fread(PreguntasLeidas, sizeof(t_pregunta_respuestas), numPreguntas, fichero);
+  fread(PreguntasLeidas, sizeof(t_pregunta_respuestas), numElem, fichero);
+
+  numPreguntas = numElem;
 
   return PreguntasLeidas;
 }
