@@ -100,7 +100,7 @@ t_jugador* leerJugador(int* num_jugadores)
   return jugadores;
 }
 
-void guardarPreguntaRespuestas(t_pregunta_respuestas [] PreguntasParaGuardar, int numPreguntas)
+void guardarPreguntaRespuestas(t_pregunta_respuestas PreguntasParaGuardar [], int numPreguntas)
 {
   FILE* fichero = fopen("PreguntaRespuestas.dat", wb);  
 

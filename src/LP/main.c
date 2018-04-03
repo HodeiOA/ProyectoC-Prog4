@@ -223,7 +223,7 @@ int main(int argc, char** argv)
 
 		 if(respValida == 1)
 		 {
-		 	sumarPunto(jugadorPrincipal);
+		 	sumarPunto(&jugadorPrincipal);
 		 }
 	 }
 	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");
