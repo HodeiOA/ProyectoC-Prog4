@@ -252,8 +252,6 @@ void multijugador()
  {
  	int cantJugadores;
  	int cantPreg;
- 	int maxJugadores; //Esto lo comprobaremos pasándole al metodo de operaciones (maxJugadores=cantidad de preguntas que existen)
- 	int maxPreguntas; //Esto lo comprobaremos pasándole al método de operaciones preguntas*jugadores
 
  	int cantidadPreguntasValida;
  	int sizeEmpatados=0;
