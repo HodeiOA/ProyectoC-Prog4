@@ -1,4 +1,5 @@
 #include "../INCLUDES/jugador.h"
+#include "../INCLUDES/data.h"
 #include <string.h>
 
 t_jugador crearJugador(char* Nick)
@@ -20,7 +21,7 @@ void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 	t_jugador* listaJugadoresFich;
 	int numFich; // Lo enviamos como parámetro ampersand a leerJugadores() de data y así podemos recibir las dos cosas
 
-	listaJugadoresFich = leerJugador(&numFich); // Editar nombre método correcto
+	listaJugadoresFich = (t_jugador*) leerJugador(&numFich);
 
 	for(int i = 0; i < numFich; i++)
 	{
@@ -33,5 +34,5 @@ void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 		}
 	}
 
-	guardarJugadores(listaJugadoresFich, numFich); // Editar nombre método correcto
+	guardarJugadores(listaJugadoresFich, numFich);
 }
