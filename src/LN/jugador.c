@@ -12,7 +12,7 @@ t_jugador crearJugador(char* Nick)
 
 void sumarPunto(t_jugador* Jugador)
 {
-	*(Jugador.)puntuacion += 1;
+	*(Jugador).puntuacion += 1;
 }
 
 void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)

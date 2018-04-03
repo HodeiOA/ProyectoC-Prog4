@@ -1,5 +1,5 @@
 #include "INCLUDES/preguntas_respuestas.h"
-#include <stdlib.c>
+#include <stdlib.h>
 #include <string.h>
 
 void prepararRespuestas(t_pregunta_respuestas* pregunta)

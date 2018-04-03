@@ -1,9 +1,9 @@
-//#include "jugador.h"
-//#include "Pregunta_Respuesta.h"
+#include "INCLUDES/jugador.h"
+#include "INCLUDES/Pregunta_Respuesta.h"
 #include "INCLUDES/utilidades.h"
 #include <string.h>
 //#include <stdio.h>
-#include <time.h> //para random
+
 //Declaración de métodos
 void menuAdmin();
 void menuJugador();
@@ -25,9 +25,6 @@ t_jugador jugadorPrincipal;
 //Tamaños de las listas
 unsigned int sizeTotalPreguntas; //igualarlo a un método de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
 unsigned int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
-
-//Si tras estos intentos de encontrar una pregunta que no haya salido aún no se consigue, se mostrará una aleatoria, sin importar si está repetida
-int MAX_INTENTOS=20 ;
 
 int main(int argc, char** argv)
 {
@@ -120,13 +117,14 @@ int main(int argc, char** argv)
 	    	 r1=NULL;
 	    }
 
+	    guardarPreguntaRepuestas(preg_r, cant_p);
+
 	    mostrarMensaje("\n¿Quieres seguir introduciendo preguntas?\n");
  		mostrarMensaje("\t1.- Sí\n");
  		mostrarMensaje("\t2.- No\n");
  		recogerInt(&opcion);
 
 	}while (opcion!=2);
-
  }
 
  void menuJugador()
@@ -175,7 +173,7 @@ int main(int argc, char** argv)
 
   		default:
   		break;
-  	}
+  	} 
  }
 
  void individual()
@@ -187,72 +185,30 @@ int main(int argc, char** argv)
  	t_pregunta_respuestas pregunta;
  	int random;//variable en la que guardaremos el número aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
- 	//int sizePreguntasSalidas;
- 	//int sizeTotalPreguntas;
-	
+ 	int cantidadPreguntasValida = 0; //Variable para ver si se ha pasado o no con la cantidad de preguntas
  	int cont=0;
  	int respValida=-1;
+ 	int respCorrecta;
  	char* respuesta;
 
  	int opcion; //Para la elección del final
 
-	//reamos al menos un hueco para ArrPreg
-  	//arrPreg= (t_pregunta_respuestas*)malloc(sizeof(t_pregunta_respuestas)); //BOrrar esto cuando llamemos a data
-
- 	//Leer todas las preguntas
- 		//Llamar a data
- 	//Cantidad de preguntas en cada array
- //	sizePreguntasSalidas = sizeof(preguntasSalidas)/sizeof(t_pregunta_respuestas);
- //	sizeTotalPreguntas = sizeof(arrPreg)/sizeof(t_pregunta_respuestas);
-
  	mostrarMensaje("\t Juego individual");
  	mostrarMensaje("¿Cuántas preguntas deseas que se te realicen?\t");
  	recogerInt(&cant_preguntas);
+
+ 	cantidadPreguntasValida = maxPreguntas (cant_preguntas, sizeTotalPreguntas);
  	
- 	while(cant_preguntas<0 || cant_preguntas> max_preguntas)
+ 	while(cant_preguntas<0 || cantidadPreguntasValida == 0)
  	{
 		mostrarMensaje("El número de preguntas no es válido (porque es muy elevado o porque no es mayor a 0)\n Por favor, introduce otro número: \t");
  		recogerInt(&cant_preguntas);
+ 		cantidadPreguntasValida = maxPreguntas (cant_preguntas, sizeTotalPreguntas);
  	}
 
- 	srand(time(NULL));
- 	for (int i = 0; i < cant_preguntas; ++i)
-	 {
-		 	do
-		 	{
-			 		random = rand() %(cant_preguntas); //genera un número aleatorio entre 0 y cant_preguntas-1
-			 		pregunta = arrPreg[random];
-
-			 		for(int j=0; j < sizePreguntasSalidas; i++)
-			 		{
-			 			if(strcmp (pregunta.Pregunta,preguntasSalidas[i].Pregunta)==0)
-			 			{
-			 				repetida = 0; //si son iguales, será 0
-			 			}
-			 			
-			 		}
-			 	
-			 	cont++;
-		 	}while(repetida==0 || cont !=MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
-		 
-		 aux = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas)*sizePreguntasSalidas+1);//creamos espacio para las preguntas ya salidas +1 (la nueva)
-		//metemos todas las preguntas del array de los ya salidos en la variable auxiliar
-		 for (int i=0; i<sizePreguntasSalidas; i++)
-		 {
-		 	aux[i] = preguntasSalidas [i];
-		 }
-		 aux[sizePreguntasSalidas] = pregunta;//Añadimos la pregunta en la variable auxiliar
-
-		 //Hacemos malloc de preguntasSalidas otra vez para darles espacio para un hueco más
-		 preguntasSalidas = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas)*sizePreguntasSalidas+1);
-		 for (int i=0; i<sizePreguntasSalidas+1; i++)
-		 {
-		 	preguntasSalidas [i] = aux[i]; 
-		 }
-		 //nos libramos de aux porque ya no nos hace falta
-		 free(aux);
-		 aux = NULL;
-
+ 	for(int i=0; i<cant_preguntas; i++)
+ 	{
+ 		 generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
 		 mostrarPregunta(pregunta);
 		 mostrarRespuestas(pregunta);
 		 respValida = recogerRespuesta(&respuesta);
@@ -261,8 +217,13 @@ int main(int argc, char** argv)
 		 {
 		 	 respValida = recogerRespuesta(&respuesta);
 		 }
-
 	 //LLAMAR AL MÉTODO DE OPERACIONES QUE COMPRUEBA SI LA RESPUESTA ES CORRECTA O NO
+		 respCorrecta = comprobarRespuesta(respuesta);
+
+		 if(respValida == 1)
+		 {
+		 	sumarPunto(jugadorPrincipal);
+		 }
 	 }
 	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");
 	 mostrarMensaje("1.- Volver a jugar\n");
@@ -294,6 +255,7 @@ void multijugador()
  	int maxJugadores; //Esto lo comprobaremos pasándole al metodo de operaciones (maxJugadores=cantidad de preguntas que existen)
  	int maxPreguntas; //Esto lo comprobaremos pasándole al método de operaciones preguntas*jugadores
 
+ 	int cantidadPreguntasValida;
  	int sizeEmpatados=0;
  	int puntMaxima;
  	int opcion; 
@@ -302,7 +264,8 @@ void multijugador()
  	mostrarMensaje("¿Cuántos jugadores van a jugar?\t");
  	recogerInt(&cantJugadores);
 
- 	while(cantJugadores<1 || cantJugadores > maxJugadores)
+ 	cantidadPreguntasValida = maxPreguntas (cantJugadores, sizeTotalPreguntas);
+ 	while(cantJugadores<1 ||  cantidadPreguntasValida == 0)
  	{
  		mostrarMensaje("El número introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles. \n");
  		mostrarMensaje("Por favor, intoduce cuántos jugadores van a jugar: \t");
@@ -322,8 +285,9 @@ void multijugador()
 
  	mostrarMensaje("¿Cuántas preguntas deseas que se le realicen a cada jugador?\t");
  	recogerInt(&cantPreg);
+ 	cantidadPreguntasValida = maxPreguntas (cantJugadores*cantPreg, sizeTotalPreguntas);
 
-	while(cantJugadores<1 || cantPreg>maxPreguntas)
+	while(cantJugadores<1 || cantidadPreguntasValida == 0)
  	{
  		mostrarMensaje("El número introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida. \n");
  		mostrarMensaje("Por favor, intoduce cuántas preguntas deseas que se le realicen a cada jugador: \t");
@@ -408,59 +372,14 @@ void multijugador()
  	char respuesta;
  	int random;//variable en la que guardaremos el número aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
- 	//int sizePreguntasSalidas;
- 	//int sizeTotalPreguntas;
- 	//t_pregunta_respuestas* arrPreg; //todas las preguntas guardadas en el fichero
- 	t_pregunta_respuestas* aux; //Este es un array auxiliar para poder ir añadiendo las preguntas que vayan saliendo
- 	t_pregunta_respuestas pregunta;
-	//Creamos al menos un hueco para ArrPreg
-  	//arrPreg= (t_pregunta_respuestas*)malloc(sizeof(t_pregunta_respuestas)); //BOrrar esto cuando llamemos a data
-	
- 	//Leer todas las preguntas
- 		//Llamar a data
- 	//Cantidad de preguntas en cada array
- 	//sizePreguntasSalidas = sizeof(preguntasSalidas)/sizeof(t_pregunta_respuestas);
- 	//sizeTotalPreguntas = sizeof(arrPreg)/sizeof(t_pregunta_respuestas);
- 	//Por cada pregunta (for 1), se le realizará una a cada jugador (for 2)
+ 	
  	for(int i=0; i<cantPreg; i++)
  	{
  		for(int j=0; j<cantJugadores; j++)
  		{
  			mostrarMensaje("Pregunta para el jugador #");mostrarInt(i+0);mostrarMensaje("->"); mostrarMensaje(multijugadores[i].nick);
  			//Preparar la pregunta aleatoria para el jugador
- 				srand(time(NULL));
-			 	do
-			 	{
-				 		random = rand() %(cantPreg); //genera un número aleatorio entre 0 y cant_preguntas-1
-				 		pregunta = arrPreg[random];
-
-				 		for(int j=0; j < sizePreguntasSalidas; i++)
-				 		{
-				 			if(strcmp (pregunta.Pregunta,preguntasSalidas[i].Pregunta)==0)
-				 			{
-				 				repetida = 0; //si son iguales, será 0
-				 			}
-				 		}
-				 	cont++;
-			 	}while(repetida==0 || cont !=MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
-			 
-			 aux = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas)*sizePreguntasSalidas+1);//creamos espacio para las preguntas ya salidas +1 (la nueva)
-			//metemos todas las preguntas del array de los ya salidos en la variable auxiliar
-			 for (int u=0; u<sizePreguntasSalidas; u++)
-			 {
-			 	aux[u] = preguntasSalidas [u];
-			 }
-			 aux[sizePreguntasSalidas] = pregunta;//Añadimos la pregunta en la variable auxiliar
-
-			 //Hacemos malloc de preguntasSalidas otra vez para darles espacio para un hueco más
-			 preguntasSalidas = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas)*sizePreguntasSalidas+1);
-			 for (int k=0; k<sizePreguntasSalidas+1; k++)
-			 {
-			 	preguntasSalidas [k] = aux[i]; 
-			 }
-			 //nos libramos de aux porque ya no nos hace falta
-			 free(aux);
-			 aux = NULL;
+ 			generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
 
 			 mostrarPregunta(pregunta);
 			 mostrarRespuestas(pregunta);
@@ -470,21 +389,18 @@ void multijugador()
 			 {
 			 	 respValida = recogerRespuesta(&respuesta);
 			 }
-
-			 //AÑADIR LA PUNTUACIÓN DE J(I+1) SEGÚN LA RESPUESTA
-			 /*
+			
 			 int correcta=0;
-			 correcta = comprobarRespuesta(...);
-			 if(correcta = 1)
+			 correcta = comprobarRespuesta(respuesta);
+
+			 if(correcta == 1)
 			 {
 				multijugadores[i].puntuacion +=1;
 			 }
-			 */
  		}
  	}
 
  }
-
 
   void ranking()
  {
