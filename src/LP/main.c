@@ -367,7 +367,6 @@ void multijugador()
  {
  	int cont=0;
  	int respValida=-1;
- 	char respuesta;
  	int random;//variable en la que guardaremos el número aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	t_pregunta_respuestas pregunta;
