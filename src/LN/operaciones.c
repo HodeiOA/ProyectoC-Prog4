@@ -28,7 +28,7 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 
 		 	cont++;
 	 	}
-	 	while(repetida == 0 || cont ! = MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
+	 	while(repetida == 0 || cont != MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
 	 
 	 aux = (t_pregunta_respuestas*) malloc ((sizePreguntasSalidas+1) * sizeof(t_pregunta_respuestas));
 	 //creamos espacio para las preguntas ya salidas +1 (la nueva)
