@@ -30,8 +30,8 @@ void guardarJugador(t_jugador* jugadores,  int sizeJugadores)
 	//cargarme el aux2 y que aux2 valga puntuación en cada momento
   	strcat (aux1,aux2);
   	aux2 = NULL;
-	// sscanf (jugadores[i].puntuacion, "%s", &aux2);
-	aux2 = jugadores[i].puntuacion;
+	
+	aux2 = (char*) jugadores[i].puntuacion;
 
 	//luego hacer strcat (para concatenar) paso 1ro aux1 y 2o el aux2
 	//cargarme el aux2 y que valga /n en la posición 0 y en la posi 1 que valga /0
