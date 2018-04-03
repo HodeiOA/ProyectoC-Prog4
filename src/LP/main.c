@@ -1,5 +1,5 @@
 #include "../INCLUDES/jugador.h"
-#include "../INCLUDES/Pregunta_Respuesta.h"
+#include "../INCLUDES/preguntas_respuestas.h"
 #include "../INCLUDES/utilidades.h"
 #include "../INCLUDES/data.h"
 #include "../INCLUDES/operaciones.h"
