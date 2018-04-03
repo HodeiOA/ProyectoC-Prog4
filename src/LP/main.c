@@ -23,8 +23,8 @@ t_pregunta_respuestas* arrPreg;//Llamar al método leer de data
 t_jugador jugadorPrincipal;
 
 //Tamaños de las listas
-//int sizeTotalPreguntas; //igualarlo a un método de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
-//int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
+unsigned int sizeTotalPreguntas; //igualarlo a un método de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
+unsigned int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
 
 //Si tras estos intentos de encontrar una pregunta que no haya salido aún no se consigue, se mostrará una aleatoria, sin importar si está repetida
 int MAX_INTENTOS=20 ;
@@ -99,7 +99,7 @@ int main(int argc, char** argv)
 	    	 recogerString(&correcta, MAX_RESP);
 
 	    	 //Hacemos un malloc para que el array tenga tandos caracteres como la respuesta correcta +1, para el punto y para el \0
-	    	 r1=(char*)malloc(strlen(correcta+2)*sizeof(char*));
+	    	 r1=(char*)malloc((strlen(correcta)+2)*sizeof(char*));
 
 	    	 r1[0]='.'; //Le ponemos a r1 el .
 	    	 r1[1]=0; //Para convertir la cadena de caracteres en String, le ponemos el 0 (o \0)
@@ -136,7 +136,7 @@ int main(int argc, char** argv)
  	 mostrarMensaje("----MENÚ----\n"); 
  	 mostrarMensaje("Por favor, elije una de las siguientes opciones:\n"); 
  	 mostrarMensaje("\t 1.- Jugar partida individual\n"); 
- 	 mostrarMensaje("\t 2.- Jugar partida multihugador\n"); 
+ 	 mostrarMensaje("\t 2.- Jugar partida multijugador\n"); 
  	 mostrarMensaje("\t 3.- Ver ránking\n"); 
  	 mostrarMensaje("\t 4.- Salir \n"); 
  	 mostrarMensaje("Indica el número de la opción que quieres elegir\n"); 
@@ -180,7 +180,7 @@ int main(int argc, char** argv)
 
  void individual()
  {
- 	unsigned int cant_preguntas;
+ 	int cant_preguntas;
  	int max_preguntas;//Leer las preguntas, meterlas en un array y contar la cantidad de posiciones de ese array
  	//t_pregunta_respuestas* arrPreg; //todas las preguntas guardadas en el fichero
  	t_pregunta_respuestas* aux; //Este es un array auxiliar para poder ir añadiendo las preguntas que vayan saliendo
@@ -192,7 +192,7 @@ int main(int argc, char** argv)
 	
  	int cont=0;
  	int respValida=-1;
- 	char respuesta;
+ 	char* respuesta;
 
  	int opcion; //Para la elección del final
 
@@ -314,7 +314,7 @@ void multijugador()
  	multijugadores[0].nick = jugadorPrincipal.nick;
 
  	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
- 	for (int i = 1; i < cantJugadores -1; ++i) //Empezamos el bucle desde 1 porque el 0 ya lo hemos cubierto
+ 	for (int i = 1; i < cantJugadores; ++i) //Empezamos el bucle desde 1 porque el 0 ya lo hemos cubierto
  	{
  		mostrarMensaje("J");mostrarInt(i+1);mostrarMensaje(":  "); //Para que aparezca como JX: 
  		recogerNick (&multijugadores[i].nick);
@@ -336,9 +336,8 @@ void multijugador()
 	 do
 	 {
 	 	puntMaxima = maxPuntuacion(multijugadores);
-	 	
 
-	 	for(int i=0; i<cantJugadores -1; i++)
+	 	for(int i=0; i<cantJugadores; i++)
 	 	{
 	 		if(multijugadores[i].puntuacion == puntMaxima)
 	 		{
@@ -352,7 +351,7 @@ void multijugador()
 	 		//1.- Recoger los jugadores que han empatado 
 	 		t_jugador empatados[sizeEmpatados];
 	 		//De todos los jugadores, metemos en el array los que hayan empatado como ganadores
-	 		for(int i=0; i<cantJugadores -1; i++)
+	 		for(int i=0; i<cantJugadores; i++)
 	 		{
 	 			if(multijugadores[i].puntuacion == puntMaxima)
 				{
@@ -361,16 +360,17 @@ void multijugador()
 	 		}
 	 		mensajeEmpate(empatados);
 	 		recogerInt(&opcion);
-	 		sizeEmpatados = opcion -1; //Si elige la 2 (finalizar la partida), sizeEmpatados=1, sale del bucle. Si no, se queda en el while
-
-	 		//Realizamos una sola pregunta entre los jugadores que han empatado para ver si así deshacen el empate
-	 		RealizarPreguntasMultijugador(empatados, 1, sizeEmpatados);
-
+	 		
+	 		if(opcion ==1)
+	 		{
+	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si así deshacen el empate
+		 		RealizarPreguntasMultijugador(empatados, 1, sizeEmpatados);
+	 		}
 	 	}	 	
-	 }while(sizeEmpatados == 1);//No hay empate
+	 }while(sizeEmpatados == 1 || opcion==2);//No hay empate
 	 //Si había empate, ya se ha resuelto si así se ha querido. 
 	 //Si no se resolvió, se mostrará un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
-	 	for(int i=0; i<cantJugadores -1; i++)
+	 	for(int i=0; i<cantJugadores; i++)
 	 	{
 	 		if(multijugadores[i].puntuacion == puntMaxima)
 	 		{
@@ -422,9 +422,9 @@ void multijugador()
  	//sizePreguntasSalidas = sizeof(preguntasSalidas)/sizeof(t_pregunta_respuestas);
  	//sizeTotalPreguntas = sizeof(arrPreg)/sizeof(t_pregunta_respuestas);
  	//Por cada pregunta (for 1), se le realizará una a cada jugador (for 2)
- 	for(int i=0; i<cantPreg -1; i++)
+ 	for(int i=0; i<cantPreg; i++)
  	{
- 		for(int j=0; j<cantJugadores -1; j++)
+ 		for(int j=0; j<cantJugadores; j++)
  		{
  			mostrarMensaje("Pregunta para el jugador #");mostrarInt(i+0);mostrarMensaje("->"); mostrarMensaje(multijugadores[i].nick);
  			//Preparar la pregunta aleatoria para el jugador
@@ -490,7 +490,6 @@ void multijugador()
  {
  	t_jugador* jugadoresLeidos; //lista de todos los jugadores que ha habido en todas las partidas(no solo los de esta)
  	int sizeJugadoresLeidos;
- 	int opcion;
  	//Llamar a data y leer todos los jugadores en el fichero
 
  	sizeJugadoresLeidos =  sizeof(jugadoresLeidos)/sizeof(t_jugador); //cantidad de jugadores en el fichero
@@ -503,15 +502,6 @@ void multijugador()
  		mostrarMensaje(".-");
  		mostrarPuntuacion(jugadoresLeidos[i]);
  	}
-
-	 mostrarMensaje("Pulsa 1 para volver al menú\n");
-	 recogerInt (&opcion);
-
-	 while(opcion != 1)
-	 {
-	 	 mostrarMensaje("\nLa opción introducida no es válida. Por favor, inténtalo de nuevo:  ");
-	 	 recogerInt (&opcion);
-	 }
 	 menuJugador();
  }
 
