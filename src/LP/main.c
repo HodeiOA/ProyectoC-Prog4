@@ -64,7 +64,7 @@ int main(int argc, char** argv)
 
    do
   	{
-	  	int cant_p;//cantidad de preguntas que va a insertar el administrador
+	  	int cant_p=0;//cantidad de preguntas que va a insertar el administrador
 	  	int MAX_PREG = 250;
 	  	int MAX_RESP = 200;
 
@@ -371,6 +371,7 @@ void multijugador()
  	int random;//variable en la que guardaremos el número aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	t_pregunta_respuestas pregunta;
+ 	char * respuesta;
 
  	for(int i=0; i<cantPreg; i++)
  	{
