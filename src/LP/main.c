@@ -20,7 +20,12 @@ unsigned int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos
 
 t_pregunta_respuestas* preguntasSalidas;
 //Lista de todas las preguntas
-t_pregunta_respuestas* arrPreg = leerPreguntaRespuestas(&sizeTotalPreguntas);//Llamar al método leer de data
+leerPreguntaRespuestas(&sizeTotalPreguntas);
+
+arrPreg = (t_pregunta_respuestas*) malloc( (sizeof (t_pregunta_respuestas)) * (sizeTotalPreguntas));
+t_pregunta_respuestas* arrPreg;
+//Llamar al método leer de data
+arrPreg = leerPreguntaRespuestas(&sizeTotalPreguntas);//Llamar al método leer de data
 
 //Jugador que inicia la partida
 t_jugador jugadorPrincipal;
@@ -342,7 +347,8 @@ void multijugador()
 		 		RealizarPreguntasMultijugador(empatados, 1, sizeEmpatados);
 	 		}
 	 	}	 	
-	 }while(sizeEmpatados == 1 || opcion==2);//No hay empate
+	 }
+	 while(sizeEmpatados == 1 || opcion==2);//No hay empate
 	 //Si había empate, ya se ha resuelto si así se ha querido. 
 	 //Si no se resolvió, se mostrará un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
 	 	for(int i=0; i<cantJugadores; i++)
@@ -384,6 +390,7 @@ void multijugador()
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	t_pregunta_respuestas pregunta;
  	char respuesta;
+ 	int correcta=0;
 
  	for(int i=0; i<cantPreg; i++)
  	{
@@ -402,8 +409,20 @@ void multijugador()
 			 	 respValida = recogerRespuesta(&respuesta);
 			 }
 			
-			 int correcta=0;
-			 correcta = comprobarRespuesta(respuesta);
+			switch (respuesta)
+			{
+			case 'a':
+				correcta = comprobarRespuesta(pregunta.Respuesta1);
+			break;
+
+			case 'b':
+				correcta = comprobarRespuesta(pregunta.Respuesta2);
+			break;
+
+			case 'c':
+				correcta = comprobarRespuesta(pregunta.Respuesta3);
+			break;
+			}
 
 			 if(correcta == 1)
 			 {
