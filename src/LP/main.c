@@ -101,7 +101,7 @@ int main(int argc, char** argv)
 	    	 r1=(char*)malloc((strlen(correcta)+2)*sizeof(char*));
 
 	    	 r1[0]='.'; //Le ponemos a r1 el .
-	    	 r1[1]=0; //Para convertir la cadena de caracteres en String, le ponemos el 0 (o \0)
+	    	 r1[1]='\0'; //Para convertir la cadena de caracteres en String, le ponemos el 0 (o \0)
 	    	 //Ponerle el punto delante a la respuesta correcta
 	    	 strcat(r1,correcta); 
 	    	 

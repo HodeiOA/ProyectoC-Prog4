@@ -24,7 +24,7 @@ void guardarJugador(t_jugador* jugadores,  int sizeJugadores)
   	strcpy (aux1, jugadores[i].nick);
 	//crear un string auxiliar2 a la posición 0 del string auxiliar "," y a la posición 1 darle 0 o /0 
   	aux2[0] = ',';
-  	aux2[1] = 0;
+  	aux2[1] = '\0';
 
   	//luego hacer strcat (para concatenar) paso 1ro aux1 y 2o el aux2
 	//cargarme el aux2 y que aux2 valga puntuación en cada momento
