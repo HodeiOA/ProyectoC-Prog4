@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-#include "INCLUDES/operaciones.h"
+#include "../INCLUDES/operaciones.h"
 
 t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunta_respuestas* *preguntasSalidas, int sizePreguntasSalidas, int sizeTotalPreguntas)
 {

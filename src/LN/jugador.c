@@ -1,4 +1,4 @@
-#include "INCLUDES/jugador.h"
+#include "../INCLUDES/jugador.h"
 #include <string.h>
 
 t_jugador crearJugador(char* Nick)

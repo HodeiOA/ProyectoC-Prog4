@@ -1,4 +1,4 @@
-#include "INCLUDES/preguntas_respuestas.h"
+#include "../INCLUDES/preguntas_respuestas.h"
 #include <stdlib.h>
 #include <string.h>
 

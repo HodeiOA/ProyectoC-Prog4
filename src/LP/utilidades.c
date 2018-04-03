@@ -1,4 +1,4 @@
-#include "INCLUDES/utilidades.h"
+#include "../INCLUDES/utilidades.h"
 
 
 void mostrarMensaje(char* str)

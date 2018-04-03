@@ -1,8 +1,8 @@
-#include "INCLUDES/jugador.h"
-#include "INCLUDES/Pregunta_Respuesta.h"
-#include "INCLUDES/utilidades.h"
-#include "INCLUDES/data.h"
-#include "INCLUDES/operaciones.h"
+#include "../INCLUDES/jugador.h"
+#include "../INCLUDES/Pregunta_Respuesta.h"
+#include "../INCLUDES/utilidades.h"
+#include "../INCLUDES/data.h"
+#include "../INCLUDES/operaciones.h"
 #include <string.h>
 
 //Declaración de métodos
