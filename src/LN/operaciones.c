@@ -4,8 +4,6 @@
 
 #include "INCLUDES/operaciones.h"
 
-t_Pregunta_Respuesta *listaTodasPreguntas;
-
 t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunta_respuestas* *preguntasSalidas, int sizePreguntasSalidas, int sizeTotalPreguntas)
 {
 	int random = 0;
@@ -140,4 +138,3 @@ int maxPuntuacion(t_jugador* jugadores, int sizeJugadores)
 	}
 	return max;
 }
-
