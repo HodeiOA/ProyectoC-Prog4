@@ -34,5 +34,5 @@ void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 		}
 	}
 
-	guardarJugadores(listaJugadoresFich, numFich);
+	guardarJugador(listaJugadoresFich, numFich);
 }
