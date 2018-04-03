@@ -297,7 +297,7 @@ void multijugador()
  	
 	 do
 	 {
-	 	puntMaxima = maxPuntuacion(multijugadores);
+	 	puntMaxima = maxPuntuacion(multijugadores, cantJugadores);
 
 	 	for(int i=0; i<cantJugadores; i++)
 	 	{
