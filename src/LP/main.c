@@ -117,7 +117,7 @@ int main(int argc, char** argv)
 	    	 r1=NULL;
 	    }
 
-	    guardarPreguntaRepuestas(preg_r, cant_p);
+	    guardarPreguntaRespuestas(preg_r, cant_p);
 
 	    mostrarMensaje("\n¿Quieres seguir introduciendo preguntas?\n");
  		mostrarMensaje("\t1.- Sí\n");
@@ -189,7 +189,7 @@ int main(int argc, char** argv)
  	int cont=0;
  	int respValida=-1;
  	int respCorrecta;
- 	char* respuesta;
+ 	char respuesta;
 
  	int opcion; //Para la elección del final
 
@@ -370,7 +370,7 @@ void multijugador()
  	int random;//variable en la que guardaremos el número aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	t_pregunta_respuestas pregunta;
- 	char * respuesta;
+ 	char respuesta;
 
  	for(int i=0; i<cantPreg; i++)
  	{
