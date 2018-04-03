@@ -73,7 +73,7 @@ t_jugador* leerJugador(int* num_jugadores)
  		auxn[i] = c;
  		i++;
  	}
- 	while((c = fgetc(line)) != '\n')
+  for (int k = 0; k <strlen(line); k++)
  	{
  		if(j>=i)
  		{
