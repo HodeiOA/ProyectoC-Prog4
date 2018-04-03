@@ -22,15 +22,14 @@ t_pregunta_respuestas* preguntasSalidas;
 //Lista de todas las preguntas
 t_pregunta_respuestas* arrPreg;
 
-//Llamar al método leer de data
-sizeTotalPreguntas = leerPreguntaRespuestas(arrPreg);//Llamar al método leer de data
-
 //Jugador que inicia la partida
 t_jugador jugadorPrincipal;
 
 
 int main(int argc, char** argv)
 {
+	sizeTotalPreguntas = leerPreguntaRespuestas(arrPreg);//Llamar al método leer de data
+	
 	//-----------Decidir si es un jugador o es un administrador
 	//es un administrador  
   if (argc==2)
