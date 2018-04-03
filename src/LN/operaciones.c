@@ -20,7 +20,7 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 		 		for(int j = 0; j < sizePreguntasSalidas; j++)
 		 		{
 		 			//si son iguales, será 0
-		 			if((strcmp (pregunta.Pregunta, preguntasSalidas[j].Pregunta)) == 0)
+		 			if(strcmp (pregunta.Pregunta, preguntasSalidas[j].Pregunta) == 0)
 		 			{
 		 				repetida = 1; //si son iguales, será 1
 		 			}
