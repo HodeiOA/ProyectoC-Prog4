@@ -15,17 +15,15 @@ void acabar();
 void RealizarPreguntasMultijugador(t_jugador* multijugadores, int cantPreg, int cantJugadores);
 
 //Tamaños de las listas
-unsigned int sizeTotalPreguntas; //igualarlo a un método de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
-unsigned int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
+int sizeTotalPreguntas; //igualarlo a un método de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
+int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
 
 t_pregunta_respuestas* preguntasSalidas;
 //Lista de todas las preguntas
-leerPreguntaRespuestas(&sizeTotalPreguntas);
-
-arrPreg = (t_pregunta_respuestas*) malloc( (sizeof (t_pregunta_respuestas)) * (sizeTotalPreguntas));
 t_pregunta_respuestas* arrPreg;
+
 //Llamar al método leer de data
-arrPreg = leerPreguntaRespuestas(&sizeTotalPreguntas);//Llamar al método leer de data
+sizeTotalPreguntas = leerPreguntaRespuestas(arrPreg);//Llamar al método leer de data
 
 //Jugador que inicia la partida
 t_jugador jugadorPrincipal;
