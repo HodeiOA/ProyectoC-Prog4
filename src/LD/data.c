@@ -119,7 +119,7 @@ t_pregunta_respuestas* leerPreguntaRespuestas(int* numPreguntas)
 
   fread(PreguntasLeidas, sizeof(t_pregunta_respuestas), numElem, fichero);
 
-  numPreguntas = numElem;
+  numPreguntas = (int*) numElem;
 
   return PreguntasLeidas;
 }

@@ -88,8 +88,8 @@ Devolverá un int indicando si la opción introducida concuerda con alguna de la
 int recogerRespuesta (char* *respuesta) 
 {
 	int error=0;
-	scanf(" %c", *respuesta);//El espacio es para evitar saltos de línea
-	if(*respuesta!='a' && *respuesta!='b' && *respuesta!='c') 
+	scanf(" %c", (*respuesta));//El espacio es para evitar saltos de línea
+	if((*respuesta)!='a' && (*respuesta)!='b' && (*respuesta)!='c') 
 	{
 		printf("La respuesta no es válida. Por favor, introduce una opción válida (a, b o c) \n");
 		error=-1;
