@@ -1,7 +1,9 @@
-#include "jugador.h"
+#include "INCLUDES/jugador.h"
+#include <string.h>
 
-t_jugador crearJugador(t_jugador* listaJugadores, char* Nick)
+t_jugador crearJugador(char* Nick)
 {
+	t_jugador Jugador;
 	Jugador.nick = Nick;
 	Jugador.puntuacion = 0;
 
@@ -10,31 +12,26 @@ t_jugador crearJugador(t_jugador* listaJugadores, char* Nick)
 
 void sumarPunto(t_jugador* Jugador)
 {
-	Jugador->puntuacion += 1;
-}
-
-int existeJugador(t_jugador* listaJugadores, char* Nick)
-{
-	// No entiendo muy bien qué hace este método. ¿Mira si existe el Jugador en la lista?
+	*(Jugador.)puntuacion += 1;
 }
 
 void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 {
-	t_jugador* listaFichero;
-	int numFich; // Cómo sacamos esta información??
+	t_jugador* listaJugadoresFich;
+	int numFich; // Lo enviamos como parámetro ampersand a leerJugadores() de data y así podemos recibir las dos cosas
 
-	listaFichero = leerJugadores(); // Editar nombre método correcto
+	listaJugadoresFich = leerJugadores(); // Editar nombre método correcto
 
 	for(int i = 0; i < numFich; i++)
 	{
 		for(int j = 0; j < numElem; j++)
 		{
-			if(*(listaFichero + i)->nick == *(listaJugadores + j)->nick)
+			if(strcmp(*(listaJugadoresFich + i).nick, *(listaJugadores + j).nick) == 0)
 			{
-				*(listaFichero + i)->puntuacion += *(listaJugadores + j)->puntuacion;
+				*(listaJugadoresFich + i).puntuacion += *(listaJugadores + j).puntuacion;
 			}
 		}
 	}
 
-	guardarJugadores(listaFichero); // Editar nombre método correcto
+	guardarJugadores(listaJugadoresFich); // Editar nombre método correcto
 }

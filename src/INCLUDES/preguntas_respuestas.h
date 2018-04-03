@@ -10,6 +10,6 @@ typedef struct
 
 } t_pregunta_respuestas;
 
-t_pregunta_respuestas prepararRespuestas();
+void prepararRespuestas(t_pregunta_respuestas* pregunta)
 
 #endif
