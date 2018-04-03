@@ -26,7 +26,7 @@ void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 	{
 		for(int j = 0; j < numElem; j++)
 		{
-			if(strcmp((*(listaJugadoresFich + i).nick, (*(listaJugadores + j)).nick) == 0)
+			if(strcmp((*(listaJugadoresFich + i)).nick, (*(listaJugadores + j)).nick) == 0)
 			{
 				(*(listaJugadoresFich + i)).puntuacion += (*(listaJugadores + j)).puntuacion;
 			}
