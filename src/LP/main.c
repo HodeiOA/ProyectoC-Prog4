@@ -424,6 +424,6 @@ void multijugador()
  {
  	free(preguntasSalidas);
  	preguntasSalidas = NULL;
- 	free(jugadores);
- 	jugadores = NULL;
+ 	free(arrPreg);
+ 	arrPreg = NULL;
  }
