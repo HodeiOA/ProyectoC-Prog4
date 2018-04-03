@@ -1,6 +1,7 @@
 #include "../INCLUDES/utilidades.h"
 
 
+
 void mostrarMensaje(char* str)
 {
 	printf("%s",str );

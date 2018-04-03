@@ -4,6 +4,8 @@
 	#include <string.h>
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include "../INCLUDES/preguntas_respuestas.h"
+	#include "../INCLUDES/jugador.h"
 
 	void mostrarMensaje(char * str); //bien
 	void mostrarInt(int i);

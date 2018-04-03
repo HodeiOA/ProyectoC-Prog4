@@ -12,7 +12,7 @@ t_jugador crearJugador(char* Nick)
 
 void sumarPunto(t_jugador* Jugador)
 {
-	*(Jugador).puntuacion += 1;
+	(*(Jugador)).puntuacion += 1;
 }
 
 void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
@@ -26,9 +26,9 @@ void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 	{
 		for(int j = 0; j < numElem; j++)
 		{
-			if(strcmp(*(listaJugadoresFich + i).nick, *(listaJugadores + j).nick) == 0)
+			if(strcmp((*(listaJugadoresFich + i).nick, (*(listaJugadores + j)).nick) == 0)
 			{
-				*(listaJugadoresFich + i).puntuacion += *(listaJugadores + j).puntuacion;
+				(*(listaJugadoresFich + i)).puntuacion += (*(listaJugadores + j)).puntuacion;
 			}
 		}
 	}
