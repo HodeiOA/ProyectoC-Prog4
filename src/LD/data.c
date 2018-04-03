@@ -109,7 +109,7 @@ void guardarPreguntaRespuestas(t_pregunta_respuestas PreguntasParaGuardar[], int
   fwrite(PreguntasParaGuardar, sizeof(t_pregunta_respuestas), numPreguntas, fichero);
 }
 
-void leerPreguntaRespuestas(int* numPreguntas)
+t_pregunta_respuestas* leerPreguntaRespuestas(int* numPreguntas)
 {
   t_pregunta_respuestas* PreguntasLeidas;
   FILE* fichero = fopen("PreguntaRespuestas.dat", rb);
