@@ -13,7 +13,7 @@
 	void mostrarRespuestas(t_pregunta_respuestas preg);
 	void mostrarPuntuacion(t_jugador jugador);
 	void mensajeGanador(t_jugador ganador);
-	void mensajeEmpate(t_jugador* empatados);
+	void mensajeEmpate(t_jugador* empatados, int sizeEmpatados);
 	void recogerString (char** punt_string, int max_long);
 	void recogerNick (char** punt_nick);
 	void recogerInt (int* punt_numero);
