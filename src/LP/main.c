@@ -415,7 +415,7 @@ void multijugador()
  		{
  			mostrarMensaje("Pregunta para el jugador #");mostrarInt(i+0);mostrarMensaje("->"); mostrarMensaje(multijugadores[i].nick);
  			//Preparar la pregunta aleatoria para el jugador
- 			generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
+ 			pregunta = generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
 
 			 mostrarPregunta(pregunta);
 			 mostrarRespuestas(pregunta);
