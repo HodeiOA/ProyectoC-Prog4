@@ -28,11 +28,12 @@ t_jugador jugadorPrincipal;
 
 int main(int argc, char** argv)
 {
-	sizeTotalPreguntas = leerPreguntaRespuestas(&arrPreg);//Llamar al método leer de data
-	mostrarInt(sizeTotalPreguntas);
-	//-----------Decidir si es un jugador o es un administrador
-	//es un administrador  
-  if (argc==2)
+	preguntasSalidas = (t_pregunta_respuestas*)malloc(sizeof(t_pregunta_respuestas));
+	sizeTotalPreguntas = numPreguntasEnFichero();
+	arrPreg = (t_pregunta_respuestas*)malloc(sizeTotalPreguntas * sizeof(t_pregunta_respuestas));
+	arrPreg = leerPreguntasRespuestas();
+
+  if(argc == 2)
   {
   	//Para comparar los strings, usamos strcmp
 	int admin;
@@ -45,13 +46,20 @@ int main(int argc, char** argv)
   }
   else //es un jugador
   {
-  	//Antes de mostrar el menú, como es la primera vez, hacemos que se identifique
-  	char* nick;
-  	recogerNick(&nick);
- 	crearJugador(nick);
+  	if(sizeTotalPreguntas == 0)
+  	{
+  		mostrarMensaje("No hay preguntas en el sistema :(");
+  	}
+  	else
+  	{
+	  	//Antes de mostrar el menú, como es la primera vez, hacemos que se identifique
+	  	char* nick;
+	  	recogerNick(&nick);
+	 	crearJugador(nick);
 
-    menuJugador();
-    //asignarle nick al jugador
+	    menuJugador();
+	    //asignarle nick al jugador
+	}
   }
 
   return 0;

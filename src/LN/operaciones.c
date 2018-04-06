@@ -16,7 +16,6 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 	 	{
 		 		random = rand() %(sizeTotalPreguntas); //genera un número aleatorio entre 0 y sizeTotalPreguntas-1
 		 		pregunta = arrPreg[random];
-
 		 		for(int j = 0; j < sizePreguntasSalidas; j++)
 		 		{
 		 			//si son iguales, será 0
