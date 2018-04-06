@@ -19,7 +19,9 @@ void sumarPunto(t_jugador* Jugador)
 void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
 {
 	t_jugador* listaJugadoresFich;
-	int numFich; // Lo enviamos como parámetro ampersand a leerJugadores() de data y así podemos recibir las dos cosas
+	int numFich;
+
+	numFich = numJugadoresTotal(); 
 
 	listaJugadoresFich = (t_jugador*) leerJugadores();
 
