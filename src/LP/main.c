@@ -441,7 +441,7 @@ void multijugador()
 			break;
 			}
 
-		if(respCorrecta == 1)
+		if(correcta == 1)
 		 {
 		 	mostrarMensaje("Respuesta correcta\n");
 		 	sumarPunto(&jugadorPrincipal);
