@@ -97,18 +97,18 @@ t_jugador* leerJugador(int* num_jugadores)
   return jugadores;
 }
 
-void guardarPreguntaRespuestas(t_pregunta_respuestas PreguntaParaGuardar)
+void guardarPreguntaRespuestas(t_pregunta_respuestas* PreguntasParaGuardar, int numPreguntas)
 {
-  FILE* fichero = fopen("PreguntaRespuestas.dat", "wb");  
+  FILE* fichero = fopen("PreguntaRespuestas.dat", "ab");  
 
-  fputc(1, fichero);
+  fputc(numPreguntas, fichero);
 
-  fwrite(&PreguntaParaGuardar, sizeof(t_pregunta_respuestas), 1, fichero);
+  fwrite(PreguntasParaGuardar, sizeof(t_pregunta_respuestas), numPreguntas, fichero);
 
   fclose(fichero);
 }
 
-int leerPreguntaRespuestas(t_pregunta_respuestas* PreguntasLeidas)
+int leerPreguntaRespuestas(t_pregunta_respuestas** PreguntasLeidas)
 {
 	int numElem;
 
@@ -116,9 +116,9 @@ int leerPreguntaRespuestas(t_pregunta_respuestas* PreguntasLeidas)
 
   numElem = fgetc(fichero);
 
-  PreguntasLeidas = (t_pregunta_respuestas*) malloc(numElem * sizeof(t_pregunta_respuestas));
+  *PreguntasLeidas = (t_pregunta_respuestas*) malloc(numElem * sizeof(t_pregunta_respuestas));
 
-  fread(PreguntasLeidas, sizeof(t_pregunta_respuestas), numElem, fichero);
+  fread(*PreguntasLeidas, sizeof(t_pregunta_respuestas), numElem, fichero);
 
   return numElem;
 
