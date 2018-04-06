@@ -447,8 +447,8 @@ void multijugador()
  	t_jugador* jugadoresLeidos; //lista de todos los jugadores que ha habido en todas las partidas(no solo los de esta)
  	int sizeJugadoresLeidos;
  	//Llamar a data y leer todos los jugadores en el fichero
-
- 	sizeJugadoresLeidos =  sizeof(jugadoresLeidos)/sizeof(t_jugador); //cantidad de jugadores en el fichero
+ 	jugadoresLeidos = leerJugadores();
+ 	sizeJugadoresLeidos =  numJugadoresTotal();
  	ordenarJugadores(jugadoresLeidos, sizeJugadoresLeidos);
 
  	mostrarMensaje("RANKING DE JUGADORES");
