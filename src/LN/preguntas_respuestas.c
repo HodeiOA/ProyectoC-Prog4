@@ -33,11 +33,6 @@ void prepararRespuestas(t_pregunta_respuestas* pregunta)
 		}
 	}
 
-	// for(int i=0; i<3; i++)
-	// {
-	// 	(respuestas[random[i]])[0]='\0';
-	// }
-
 	strcpy(respuestas[random[0]], (*pregunta).Respuesta1);
 	strcpy(respuestas[random[1]], (*pregunta).Respuesta2);
 	strcpy(respuestas[random[2]], (*pregunta).Respuesta3);
