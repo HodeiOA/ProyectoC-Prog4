@@ -7,8 +7,9 @@
 
 	void guardarJugador(t_jugador* jugadores,  int sizeJugadores);
 	t_jugador* leerJugador(int* num_jugadores);
-	void guardarPreguntaRespuestas(t_pregunta_respuestas* PreguntasParaGuardar, int numPreguntas);
-	int leerPreguntaRespuestas(t_pregunta_respuestas** PreguntasLeidas);
+	void guardarPreguntaRespuestas(t_pregunta_respuestas* PreguntasParaGuardar, int numNuevas);
+	int numPreguntasEnFichero();
+	t_pregunta_respuestas* leerPreguntasRespuestas();
 
 
 

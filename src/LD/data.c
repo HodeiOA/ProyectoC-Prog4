@@ -97,30 +97,67 @@ t_jugador* leerJugador(int* num_jugadores)
   return jugadores;
 }
 
-void guardarPreguntaRespuestas(t_pregunta_respuestas* PreguntasParaGuardar, int numPreguntas)
+void guardarPreguntaRespuestas(t_pregunta_respuestas* PreguntasParaGuardar, int numNuevas)
 {
-  FILE* fichero = fopen("PreguntaRespuestas.dat", "ab");  
+  t_pregunta_respuestas* TodasPreguntas;
+  int numPreguntas;
+
+  numPreguntas = numNuevas + numPreguntasEnFichero();
+
+  TodasPreguntas = leerPreguntasRespuestas();
+
+  TodasPreguntas = (t_pregunta_respuestas*) realloc(TodasPreguntas, numPreguntas * sizeof(t_pregunta_respuestas));
+
+  for(int i = 0; i < numNuevas; i++)
+  {
+    TodasPreguntas[numPreguntas - numNuevas + i] = PreguntasParaGuardar[i];
+  }
+
+  FILE* fichero = fopen("PreguntaRespuestas.dat", "wb");  
 
   fputc(numPreguntas, fichero);
 
-  fwrite(PreguntasParaGuardar, sizeof(t_pregunta_respuestas), numPreguntas, fichero);
+  fwrite(TodasPreguntas, sizeof(t_pregunta_respuestas), numPreguntas, fichero);
 
   fclose(fichero);
 }
 
-int leerPreguntaRespuestas(t_pregunta_respuestas** PreguntasLeidas)
+int numPreguntasEnFichero()
 {
-	int numElem;
+  int numElem;
 
   FILE* fichero = fopen("PreguntaRespuestas.dat", "rb");
 
-  numElem = fgetc(fichero);
+  if(fichero != NULL)
+  {
+    numElem = fgetc(fichero);
+  } else
+  {
+    numElem = 0;
+  }
 
-  *PreguntasLeidas = (t_pregunta_respuestas*) malloc(numElem * sizeof(t_pregunta_respuestas));
-
-  fread(*PreguntasLeidas, sizeof(t_pregunta_respuestas), numElem, fichero);
+  fclose(fichero);
 
   return numElem;
+}
+
+t_pregunta_respuestas* leerPreguntasRespuestas()
+{
+  t_pregunta_respuestas* PreguntasLeidas;
+	int numElem = 0;
+
+  FILE* fichero = fopen("PreguntaRespuestas.dat", "rb");
+
+  if(fichero != NULL)
+  {
+    numElem = fgetc(fichero);
+
+    PreguntasLeidas = (t_pregunta_respuestas*) malloc(numElem * sizeof(t_pregunta_respuestas));
+
+    fread(PreguntasLeidas, sizeof(t_pregunta_respuestas), numElem, fichero);
+  }
+
+  return PreguntasLeidas;
 
   fclose(fichero);
 }
