@@ -1,10 +1,10 @@
 #include "../INCLUDES/preguntas_respuestas.h"
 #include <stdlib.h>
 #include <string.h>
-
+#include <stdio.h>
 void prepararRespuestas(t_pregunta_respuestas* pregunta)
 {
-	char* respuestas[3];
+	char respuestas[3][252];
 	int i = 2;
 	int igual = 0;
 	int r;
@@ -13,7 +13,7 @@ void prepararRespuestas(t_pregunta_respuestas* pregunta)
 	random[0] = -1;
 	random[1] = -1;
 	random[2] = -1;
-
+ 	
 	// Este while llena el array random con números aleatorios de 0 a 2, pero que no se repitan.
 	while(i>=0)
 	{
@@ -31,6 +31,11 @@ void prepararRespuestas(t_pregunta_respuestas* pregunta)
 			random[i] = r;
 			i--;
 		}
+	}
+
+	for(int i=0; i<3; i++)
+	{
+		(respuestas[random[i]])[0]='\0';
 	}
 
 	strcpy(respuestas[random[0]], (*pregunta).Respuesta1);

@@ -28,7 +28,7 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 		 	cont++;
 	 	}
 	 	while(repetida == 0 || cont != MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
-	 
+
 	 aux = (t_pregunta_respuestas*) malloc ((sizePreguntasSalidas+1) * sizeof(t_pregunta_respuestas));
 	 //creamos espacio para las preguntas ya salidas +1 (la nueva)
 	
@@ -38,13 +38,13 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 	 	aux[i] = *preguntasSalidas [i];
 	 }
 	 aux[sizePreguntasSalidas] = pregunta;//Añadimos la pregunta en la variable auxiliar
-
+	
 	 free (*preguntasSalidas);
 	 *preguntasSalidas = NULL;
 
 	 //Hacemos malloc de preguntasSalidas otra vez para darles espacio para un hueco más
 	 *preguntasSalidas = (t_pregunta_respuestas*) malloc ((sizePreguntasSalidas+1) * sizeof(t_pregunta_respuestas));
-	 
+	
 	 for (int i = 0; i<(sizePreguntasSalidas + 1); i++)
 	 {
 	 	*preguntasSalidas [i] = aux[i]; 

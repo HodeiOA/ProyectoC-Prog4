@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 	sizeTotalPreguntas = numPreguntasEnFichero();
 	arrPreg = (t_pregunta_respuestas*)malloc(sizeTotalPreguntas * sizeof(t_pregunta_respuestas));
 	arrPreg = leerPreguntasRespuestas();
-
+	
   if(argc == 2)
   {
   	//Para comparar los strings, usamos strcmp
