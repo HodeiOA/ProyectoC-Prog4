@@ -67,7 +67,7 @@ int comprobarRespuesta(char* respuesta)
 
 	//si correcto es 1, ha contestado bien
 
-	if (respuesta[0] =='.')
+	if (respuesta[0] =='#')
 	{
 		correcto =1;
 	}
