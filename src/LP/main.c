@@ -28,7 +28,12 @@ t_jugador jugadorPrincipal;
 
 int main(int argc, char** argv)
 {
-	
+
+  sizeTotalPreguntas = numPreguntasEnFichero(); 
+  arrPreg = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas) * sizeTotalPreguntas);
+  arrPreg = leerPreguntasRespuestas();
+  preguntasSalidas = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas));
+
   if(argc == 2)
   {
   	//Para comparar los strings, usamos strcmp
