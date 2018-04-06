@@ -242,10 +242,15 @@ int main(int argc, char** argv)
 				respCorrecta = comprobarRespuesta(pregunta.Respuesta3);
 			break;
 		}
-
-		 if(respValida == 1)
+				
+		 if(respCorrecta == 1)
 		 {
+		 	mostrarMensaje("Respuesta correcta\n");
 		 	sumarPunto(&jugadorPrincipal);
+		 }
+		 else
+		 {
+		 	mostrarMensaje("Respuesta incorrecta\n");
 		 }
 	 }
 	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");
@@ -436,10 +441,15 @@ void multijugador()
 			break;
 			}
 
-			 if(correcta == 1)
-			 {
-				multijugadores[i].puntuacion +=1;
-			 }
+		if(respCorrecta == 1)
+		 {
+		 	mostrarMensaje("Respuesta correcta\n");
+		 	sumarPunto(&jugadorPrincipal);
+		 }
+		 else
+		 {
+		 	mostrarMensaje("Respuesta incorrecta\n");
+		 }
  		}
  	}
 
