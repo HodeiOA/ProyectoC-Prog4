@@ -5,8 +5,9 @@
 	#include "../INCLUDES/preguntas_respuestas.h"
 	#include "../INCLUDES/jugador.h"
 
-	void guardarJugador(t_jugador* jugadores,  int sizeJugadores);
-	t_jugador* leerJugador(int* num_jugadores);
+	void guardarJugadores(t_jugador* listaJugadores, int numElem);
+	int numJugadoresTotal();
+	t_jugador* leerJugadores();
 	void guardarPreguntaRespuestas(t_pregunta_respuestas* PreguntasParaGuardar, int numNuevas);
 	int numPreguntasEnFichero();
 	t_pregunta_respuestas* leerPreguntasRespuestas();

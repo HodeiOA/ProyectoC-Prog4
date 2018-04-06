@@ -3,7 +3,7 @@
 
 typedef struct
 {
-	char* nick;
+	char nick[50];
 	int puntuacion;
 
 } t_jugador;
