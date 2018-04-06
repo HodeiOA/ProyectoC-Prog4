@@ -11,7 +11,7 @@ void guardarJugador(t_jugador* jugadores,  int sizeJugadores)
   char* aux2;
   
   //abrir fichero para escritura "w"
-  f = fopen("jugador.txt", "w");
+  f = fopen("./Data/jugador.txt", "w");
   
   //escribir en fichero un string formateado 
 
@@ -65,7 +65,7 @@ t_jugador* leerJugador(int* num_jugadores)
   int j = 0;
   t_jugador* jugadores;
 
-  f = fopen("jugador.txt", "r");
+  f = fopen("./Data/jugador.txt", "r");
 
   while ((read = getline(&line, &len, f)) != -1) 
   {
@@ -113,7 +113,7 @@ void guardarPreguntaRespuestas(t_pregunta_respuestas* PreguntasParaGuardar, int 
     TodasPreguntas[numPreguntas - numNuevas + i] = PreguntasParaGuardar[i];
   }
 
-  FILE* fichero = fopen("PreguntaRespuestas.dat", "wb");  
+  FILE* fichero = fopen("./Data/PreguntaRespuestas.dat", "wb");  
 
   fputc(numPreguntas, fichero);
 
@@ -126,7 +126,7 @@ int numPreguntasEnFichero()
 {
   int numElem;
 
-  FILE* fichero = fopen("PreguntaRespuestas.dat", "rb");
+  FILE* fichero = fopen("./Data/PreguntaRespuestas.dat", "rb");
 
   if(fichero != NULL)
   {
@@ -145,8 +145,8 @@ t_pregunta_respuestas* leerPreguntasRespuestas()
 {
   t_pregunta_respuestas* PreguntasLeidas;
 	int numElem = 0;
-
-  FILE* fichero = fopen("PreguntaRespuestas.dat", "rb");
+	
+  FILE* fichero = fopen("./Data/PreguntaRespuestas.dat", "rb");
 
   if(fichero != NULL)
   {
