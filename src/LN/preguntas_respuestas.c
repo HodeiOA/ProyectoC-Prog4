@@ -1,7 +1,7 @@
 #include "../INCLUDES/preguntas_respuestas.h"
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
+
 void prepararRespuestas(t_pregunta_respuestas* pregunta)
 {
 	char respuestas[3][252];
