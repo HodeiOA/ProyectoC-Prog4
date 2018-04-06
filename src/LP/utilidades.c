@@ -15,14 +15,49 @@ void mostrarInt(int i)
 //--Compilan, pero habrá que probarlos cuando sus clases estén hechas
 void mostrarPregunta(t_pregunta_respuestas preg)
 {
-	printf("%s", preg.Pregunta);
+	printf("%s\n", preg.Pregunta);
 }
 
 void mostrarRespuestas(t_pregunta_respuestas preg)
 {
-	printf("a) %s\n", preg.Respuesta1 );
-	printf("b) %s\n", preg.Respuesta2 );
-	printf("c) %s\n", preg.Respuesta3 );
+	printf("a) ");
+	if(preg.Respuesta1[0] == '#')
+	{
+		for(int i = 1; i < strlen(preg.Respuesta1); i++)
+		{
+			putchar(preg.Respuesta1[i]);
+		}
+		printf("\n");
+	} else
+	{
+		printf("%s\n", preg.Respuesta1 );
+	}
+
+	printf("b) ");
+	if(preg.Respuesta2[0] == '#')
+	{
+		for(int i = 1; i < strlen(preg.Respuesta2); i++)
+		{
+			putchar(preg.Respuesta2[i]);
+		}
+		printf("\n");
+	} else
+	{
+		printf("%s\n", preg.Respuesta2);
+	}
+
+	printf("c) ");
+	if(preg.Respuesta3[0] == '#')
+	{
+		for(int i = 1; i < strlen(preg.Respuesta3); i++)
+		{
+			putchar(preg.Respuesta3[i]);
+		}
+		printf("\n");
+	} else
+	{
+		printf("%s\n", preg.Respuesta3);
+	}
 	printf("Indica la repuesta que consideras correcta (a, b o c):  ");
 }
 

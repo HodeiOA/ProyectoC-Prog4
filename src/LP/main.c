@@ -109,7 +109,7 @@ int main(int argc, char** argv)
 	    	 //Hacemos un malloc para que el array tenga tandos caracteres como la respuesta correcta +1, para el punto y para el \0
 	    	 r1=(char*)malloc((strlen(correcta)+2)*sizeof(char*));
 
-	    	 r1[0]='.'; //Le ponemos a r1 el .
+	    	 r1[0]='#'; //Le ponemos a r1 el .
 	    	 r1[1]='\0'; //Para convertir la cadena de caracteres en String, le ponemos el 0 (o \0)
 	    	 //Ponerle el punto delante a la respuesta correcta
 	    	 strcat(r1,correcta); 
@@ -218,7 +218,7 @@ int main(int argc, char** argv)
 
  	for(int i=0; i<cant_preguntas; i++)
  	{
- 		 generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
+ 		 pregunta = generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
 		 mostrarPregunta(pregunta);
 		 mostrarRespuestas(pregunta);
 		 respValida = recogerRespuesta(&respuesta);
@@ -260,7 +260,7 @@ int main(int argc, char** argv)
 	 	 recogerInt (&opcion);
 	 }
 
-	 if(opcion = 1)
+	 if(opcion == 1)
 	 {
 	 	individual();
 	 }
