@@ -29,6 +29,11 @@ t_jugador jugadorPrincipal;
 int main(int argc, char** argv)
 {
 
+  sizeTotalPreguntas = numPreguntasEnFichero(); 
+  arrPreg = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas) * sizeTotalPreguntas);
+  arrPreg = leerPreguntasRespuestas();
+  preguntasSalidas = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas));
+
   if(argc == 2)
   {
   	//Para comparar los strings, usamos strcmp
@@ -135,12 +140,6 @@ int main(int argc, char** argv)
  void menuJugador()
  {
  	int opcion;
-
- 	preguntasSalidas = (t_pregunta_respuestas*)malloc(sizeof(t_pregunta_respuestas));
-	sizeTotalPreguntas = numPreguntasEnFichero();
-	arrPreg = (t_pregunta_respuestas*)malloc(sizeTotalPreguntas * sizeof(t_pregunta_respuestas));
-	arrPreg = leerPreguntasRespuestas();
-
 	
  	 mostrarMensaje("----MENÚ----\n"); 
  	 mostrarMensaje("Por favor, elije una de las siguientes opciones:\n"); 
