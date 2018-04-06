@@ -3,10 +3,10 @@
 
 typedef struct
 {
-	char* Pregunta;
-	char* Respuesta1;
-	char* Respuesta2;
-	char* Respuesta3;
+	char Pregunta[250 + 1];
+	char Respuesta1[1 + 250 + 1];
+	char Respuesta2[250 + 1];
+	char Respuesta3[250 + 1];
 
 } t_pregunta_respuestas;
 
