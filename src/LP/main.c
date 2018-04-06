@@ -28,7 +28,7 @@ t_jugador jugadorPrincipal;
 
 int main(int argc, char** argv)
 {
-	sizeTotalPreguntas = leerPreguntaRespuestas(arrPreg);//Llamar al método leer de data
+	sizeTotalPreguntas = leerPreguntaRespuestas(&arrPreg);//Llamar al método leer de data
 	mostrarInt(sizeTotalPreguntas);
 	//-----------Decidir si es un jugador o es un administrador
 	//es un administrador  
