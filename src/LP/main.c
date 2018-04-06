@@ -283,6 +283,8 @@ void multijugador()
  	int puntMaxima;
  	int opcion; 
 
+ 	char* aux;
+
  	mostrarMensaje("\t Juego multijugador");
  	mostrarMensaje("¿Cuántos jugadores van a jugar?\t");
  	recogerInt(&cantJugadores);
@@ -297,13 +299,14 @@ void multijugador()
  	//ARRAY CON LOS JUGADORES DE ESTA PARTIDA: Lo creamos aquí para poder hacerlo estático, ya que aquí ya sabemos la cantidad de jugadores
  	t_jugador multijugadores[cantJugadores];
  	//El primer jugador es el actual 
- 	multijugadores[0].nick = jugadorPrincipal.nick;
+ 	strcpy(multijugadores[0].nick, jugadorPrincipal.nick);
 
  	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
  	for (int i = 1; i < cantJugadores; ++i) //Empezamos el bucle desde 1 porque el 0 ya lo hemos cubierto
  	{
  		mostrarMensaje("J");mostrarInt(i+1);mostrarMensaje(":  "); //Para que aparezca como JX: 
- 		recogerNick (&multijugadores[i].nick);
+ 		recogerNick (&aux);
+ 		strcpy(multijugadores[i].nick, aux);
  	}
 
  	mostrarMensaje("¿Cuántas preguntas deseas que se le realicen a cada jugador?\t");
@@ -366,7 +369,7 @@ void multijugador()
 	 		}
 	 	}
 
-	 actualizarPuntuacion(multijugadores[i], cantJugadores);
+	 actualizarPuntuacion(multijugadores, cantJugadores);
 
 	 //Volver al menú o volver a jugar
 	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");

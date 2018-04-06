@@ -5,7 +5,7 @@
 t_jugador crearJugador(char* Nick)
 {
 	t_jugador Jugador;
-	Jugador.nick = Nick;
+	strcpy(Jugador.nick, Nick);
 	Jugador.puntuacion = 0;
 
 	return Jugador;

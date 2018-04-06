@@ -212,7 +212,7 @@ int numJugadoresTotal()
 
 t_jugador* leerJugadores()
 {
-  t:jugadores* listaJugadores;
+  t_jugador* listaJugadores;
   int numElem = 0;
   
   FILE* fichero = fopen("./Data/jugador.dat", "rb");
