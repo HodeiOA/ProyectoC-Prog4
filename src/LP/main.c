@@ -29,7 +29,7 @@ t_jugador jugadorPrincipal;
 int main(int argc, char** argv)
 {
 	sizeTotalPreguntas = leerPreguntaRespuestas(arrPreg);//Llamar al método leer de data
-	
+	mostrarInt(sizeTotalPreguntas);
 	//-----------Decidir si es un jugador o es un administrador
 	//es un administrador  
   if (argc==2)
@@ -117,9 +117,8 @@ int main(int argc, char** argv)
 
 	    	 free(r1);
 	    	 r1=NULL;
-
-	    	  guardarPreguntaRespuestas(preg_r[i]);
 	    }
+	    guardarPreguntaRespuestas(preg_r, cant_p);
 
 	    mostrarMensaje("\n¿Quieres seguir introduciendo preguntas?\n");
  		mostrarMensaje("\t1.- Sí\n");
