@@ -148,16 +148,18 @@ t_pregunta_respuestas* leerPreguntasRespuestas()
 	
   FILE* fichero = fopen("./Data/PreguntaRespuestas.dat", "rb");
 
+  PreguntasLeidas = (t_pregunta_respuestas*) malloc(sizeof(t_pregunta_respuestas));
+
   if(fichero != NULL)
   {
     numElem = fgetc(fichero);
 
-    PreguntasLeidas = (t_pregunta_respuestas*) malloc(numElem * sizeof(t_pregunta_respuestas));
+    PreguntasLeidas = (t_pregunta_respuestas*) realloc(PreguntasLeidas, numElem * sizeof(t_pregunta_respuestas));
 
     fread(PreguntasLeidas, sizeof(t_pregunta_respuestas), numElem, fichero);
   }
 
-  return PreguntasLeidas;
-
   fclose(fichero);
+  
+  return PreguntasLeidas;
 }

@@ -28,10 +28,6 @@ t_jugador jugadorPrincipal;
 
 int main(int argc, char** argv)
 {
-	preguntasSalidas = (t_pregunta_respuestas*)malloc(sizeof(t_pregunta_respuestas));
-	sizeTotalPreguntas = numPreguntasEnFichero();
-	arrPreg = (t_pregunta_respuestas*)malloc(sizeTotalPreguntas * sizeof(t_pregunta_respuestas));
-	arrPreg = leerPreguntasRespuestas();
 	
   if(argc == 2)
   {
@@ -117,11 +113,11 @@ int main(int argc, char** argv)
 	    	 recogerString(&r2, MAX_RESP);
 	    	 mostrarMensaje("\nIntroduce otra respuesta (una incorrecta): ");
 	    	 recogerString(&r3, MAX_RESP);
-
+	    	 
 	    	 strcpy(preg_r[i].Pregunta, pregunta);
-	    	 strcpy(preg_r[i].Pregunta,  r1);
-	    	 strcpy(preg_r[i].Pregunta,  r2);
-	    	 strcpy(preg_r[i].Pregunta, r3);
+	    	 strcpy(preg_r[i].Respuesta1,  r1);
+	    	 strcpy(preg_r[i].Respuesta2,  r2);
+	    	 strcpy(preg_r[i].Respuesta3, r3);
 
 	    	 free(r1);
 	    	 r1=NULL;
@@ -140,6 +136,12 @@ int main(int argc, char** argv)
  {
  	int opcion;
 
+ 	preguntasSalidas = (t_pregunta_respuestas*)malloc(sizeof(t_pregunta_respuestas));
+	sizeTotalPreguntas = numPreguntasEnFichero();
+	arrPreg = (t_pregunta_respuestas*)malloc(sizeTotalPreguntas * sizeof(t_pregunta_respuestas));
+	arrPreg = leerPreguntasRespuestas();
+
+	
  	 mostrarMensaje("----MENÚ----\n"); 
  	 mostrarMensaje("Por favor, elije una de las siguientes opciones:\n"); 
  	 mostrarMensaje("\t 1.- Jugar partida individual\n"); 
