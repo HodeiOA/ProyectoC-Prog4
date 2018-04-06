@@ -381,7 +381,7 @@ void multijugador()
 	 	 recogerInt (&opcion);
 	 }
 
-	 if(opcion = 1)
+	 if(opcion == 1)
 	 {
 	 	multijugador();
 	 }
