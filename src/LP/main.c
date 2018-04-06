@@ -254,6 +254,8 @@ int main(int argc, char** argv)
 	 mostrarMensaje("Introduce la opción deseada:  ");
 	 recogerInt (&opcion);
 
+	 actualizarPuntuacion(&jugadorPrincipal,1);
+
 	 while(opcion != 1 && opcion != 2)
 	 {
 	 	 mostrarMensaje("\nLa opción introducida no es válida. Por favor, inténtalo de nuevo:  ");
@@ -363,6 +365,8 @@ void multijugador()
 	 			mensajeGanador(multijugadores[i]);
 	 		}
 	 	}
+
+	 actualizarPuntuacion(multijugadores[i], cantJugadores);
 
 	 //Volver al menú o volver a jugar
 	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");
