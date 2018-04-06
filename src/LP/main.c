@@ -110,16 +110,16 @@ int main(int argc, char** argv)
 	    	 mostrarMensaje("\nIntroduce otra respuesta (una incorrecta): ");
 	    	 recogerString(&r3, MAX_RESP);
 
-	    	 preg_r[i].Pregunta = pregunta;
-	    	 preg_r[i].Respuesta1 = r1;
-	    	 preg_r[i].Respuesta2 = r2;
-	    	 preg_r[i].Respuesta3 = r3;
+	    	 strcpy(preg_r[i].Pregunta, pregunta);
+	    	 strcpy(preg_r[i].Pregunta,  r1);
+	    	 strcpy(preg_r[i].Pregunta,  r2);
+	    	 strcpy(preg_r[i].Pregunta, r3);
 
 	    	 free(r1);
 	    	 r1=NULL;
-	    }
 
-	    guardarPreguntaRespuestas(preg_r, cant_p);
+	    	  guardarPreguntaRespuestas(preg_r[i]);
+	    }
 
 	    mostrarMensaje("\n¿Quieres seguir introduciendo preguntas?\n");
  		mostrarMensaje("\t1.- Sí\n");

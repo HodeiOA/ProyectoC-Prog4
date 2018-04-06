@@ -103,7 +103,7 @@ void guardarPreguntaRespuestas(t_pregunta_respuestas PreguntaParaGuardar)
 
   fputc(1, fichero);
 
-  fwrite(PreguntaParaGuardar, sizeof(t_pregunta_respuestas), 1, fichero);
+  fwrite(&PreguntaParaGuardar, sizeof(t_pregunta_respuestas), 1, fichero);
 
   fclose(fichero);
 }
