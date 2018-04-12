@@ -25,7 +25,6 @@ t_pregunta_respuestas* arrPreg;
 //Jugador que inicia la partida
 t_jugador jugadorPrincipal;
 
-
 int main(int argc, char** argv)
 {
 
@@ -56,7 +55,7 @@ int main(int argc, char** argv)
 	  	//Antes de mostrar el menú, como es la primera vez, hacemos que se identifique
 	  	char* nick;
 	  	recogerNick(&nick);
-	 	crearJugador(nick);
+	 	jugadorPrincipal = crearJugador(nick);
 
 	    menuJugador();
 	    //asignarle nick al jugador

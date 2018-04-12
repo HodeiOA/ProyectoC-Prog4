@@ -129,7 +129,7 @@ int maxPuntuacion(t_jugador* jugadores, int sizeJugadores)
 
 	for(int i=0; i < sizeJugadores; i++)
 	{
-		if(max > jugadores[i].puntuacion)
+		if(max < jugadores[i].puntuacion)
 		{
 			max = jugadores[i].puntuacion;
 		}

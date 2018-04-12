@@ -79,7 +79,7 @@ void mensajeEmpate(t_jugador* empatados, int sizeEmpatados)//Recibe una lista co
 
 	for(int i=0; i < sizeEmpatados; i++ )
 	{
-		printf("%s\n", empatados[i]);
+		printf("%s\n", empatados[i].nick);
 	}
 	printf("Si deseas desempatar pulsa 1\nSi deseas finalizar la partida con empate pulsa 2\n");
 }
