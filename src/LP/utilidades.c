@@ -15,7 +15,7 @@ void mostrarInt(int i)
 //--Compilan, pero habrá que probarlos cuando sus clases estén hechas
 void mostrarPregunta(t_pregunta_respuestas preg)
 {
-	printf("%s\n", preg.Pregunta);
+	printf("\n%s\n", preg.Pregunta);
 }
 
 void mostrarRespuestas(t_pregunta_respuestas preg)
