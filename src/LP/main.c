@@ -259,6 +259,7 @@ int main(int argc, char** argv)
 	 recogerInt (&opcion);
 
 	 actualizarPuntuacion(&jugadorPrincipal,1);
+	 jugadorPrincipal.puntuacion = 0;
 
 	 while(opcion != 1 && opcion != 2)
 	 {
@@ -294,7 +295,7 @@ void multijugador()
  	recogerInt(&cantJugadores);
 
  	cantidadPreguntasValida = maxPreguntas (cantJugadores, sizeTotalPreguntas);
- 	while(cantJugadores<1 ||  cantidadPreguntasValida == 0)
+ 	while(cantJugadores<2 ||  cantidadPreguntasValida == 0)
  	{
  		mostrarMensaje("El número introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles. \n");
  		mostrarMensaje("Por favor, intoduce cuántos jugadores van a jugar: \t");
@@ -344,12 +345,14 @@ void multijugador()
 	 		//si hay empate, damos la opción de desempatar opción de desmpatar
 	 		//1.- Recoger los jugadores que han empatado 
 	 		t_jugador empatados[sizeEmpatados];
+	 		int c = 0;
 	 		//De todos los jugadores, metemos en el array los que hayan empatado como ganadores
 	 		for(int i=0; i<cantJugadores; i++)
 	 		{
 	 			if(multijugadores[i].puntuacion == puntMaxima)
 				{
-					empatados[i] = multijugadores[i];
+					empatados[c] = multijugadores[i];
+					c++;
 				}
 	 		}
 	 		mensajeEmpate(empatados, sizeEmpatados);
@@ -362,7 +365,7 @@ void multijugador()
 	 		}
 	 	}	 	
 	 }
-	 while(sizeEmpatados == 1 || opcion==2);//No hay empate
+	 while(sizeEmpatados != 1 || opcion==1);//No hay empate
 	 //Si había empate, ya se ha resuelto si así se ha querido. 
 	 //Si no se resolvió, se mostrará un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
 	 	for(int i=0; i<cantJugadores; i++)
@@ -374,6 +377,10 @@ void multijugador()
 	 	}
 
 	 actualizarPuntuacion(multijugadores, cantJugadores);
+	  for (int i=0; i<cantJugadores; i++)
+	 {
+	 	multijugadores[i].puntuacion = 0;
+	 }
 
 	 //Volver al menú o volver a jugar
 	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");
@@ -412,7 +419,7 @@ void multijugador()
  	{
  		for(int j=0; j<cantJugadores; j++)
  		{
- 			mostrarMensaje("Pregunta para el jugador #");mostrarInt(i+1);mostrarMensaje("->"); mostrarMensaje(multijugadores[i].nick);
+ 			mostrarMensaje("Pregunta para el jugador #");mostrarInt(i+1);mostrarMensaje("->"); mostrarMensaje(multijugadores[j].nick);
  			//Preparar la pregunta aleatoria para el jugador
  			pregunta = generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
 
@@ -443,7 +450,7 @@ void multijugador()
 		if(correcta == 1)
 		 {
 		 	mostrarMensaje("Respuesta correcta\n");
-		 	sumarPunto(&jugadorPrincipal);
+		 	sumarPunto(&multijugadores[j]);
 		 }
 		 else
 		 {
