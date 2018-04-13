@@ -303,15 +303,18 @@ void multijugador()
  	}
  	//ARRAY CON LOS JUGADORES DE ESTA PARTIDA: Lo creamos aquí para poder hacerlo estático, ya que aquí ya sabemos la cantidad de jugadores
  	t_jugador multijugadores[cantJugadores];
+
  	//El primer jugador es el actual 
  	strcpy(multijugadores[0].nick, jugadorPrincipal.nick);
+ 	multijugadores[0].puntuacion = 0;
 
  	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
  	for (int i = 1; i < cantJugadores; ++i) //Empezamos el bucle desde 1 porque el 0 ya lo hemos cubierto
  	{
  		mostrarMensaje("J");mostrarInt(i+1);mostrarMensaje(":  "); //Para que aparezca como JX: 
  		recogerNick (&aux);
- 		strcpy(multijugadores[i].nick, aux);
+ 		multijugadores[i]= crearJugador(aux);
+ 		multijugadores[i].puntuacion =0;
  	}
 
  	mostrarMensaje("¿Cuántas preguntas deseas que se le realicen a cada jugador?\t");

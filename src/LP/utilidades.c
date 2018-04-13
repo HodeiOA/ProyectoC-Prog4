@@ -112,6 +112,7 @@ void recogerInt (int* punt_numero)
 {
 	char str[1000];
 	fgets(str, 1000, stdin);
+	clear_if_needed(str);
 	sscanf(str, "%d", punt_numero); //eliminar el \n final
 }
 
