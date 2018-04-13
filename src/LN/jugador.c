@@ -1,6 +1,7 @@
 #include "../INCLUDES/jugador.h"
 #include "../INCLUDES/data.h"
 #include <string.h>
+#include <stdlib.h>
 
 t_jugador crearJugador(char* Nick)
 {
@@ -140,3 +141,4 @@ void actualizarPuntuacion(t_jugador* listaJugadores, int numElem)
                 	free(listaJugadoresGuardar);
                 	listaJugadoresGuardar = NULL;
    	}
+}
