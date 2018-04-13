@@ -212,18 +212,16 @@ int numJugadoresTotal()
 
 t_jugador* leerJugadores()
 {
-  t_jugador* listaJugadores;
+  t_jugador* listaJugadores = NULL;
   int numElem = 0;
   
   FILE* fichero = fopen("./Data/jugador.dat", "rb");
-
-  listaJugadores = (t_jugador*) malloc(sizeof(t_jugador));
 
   if(fichero != NULL)
   {
     numElem = fgetc(fichero);
 
-    listaJugadores = (t_jugador*) realloc(listaJugadores, numElem * sizeof(t_jugador));
+    listaJugadores = (t_jugador*) malloc(numElem * sizeof(t_jugador));
 
     fread(listaJugadores, sizeof(t_jugador), numElem, fichero);
   }
@@ -232,7 +230,6 @@ t_jugador* leerJugadores()
   
   return listaJugadores;
 }
-
 
 void guardarPreguntaRespuestas(t_pregunta_respuestas* PreguntasParaGuardar, int numNuevas)
 {
