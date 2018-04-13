@@ -473,7 +473,8 @@ void multijugador()
  	mostrarMensaje("RANKING DE JUGADORES");
  	for(int i=0; i<sizeJugadoresLeidos; i++)
  	{
- 		mostrarInt(i);
+ 		mostrarMensaje("\n");
+ 		mostrarInt(i+1);
  		mostrarMensaje(".-");
  		mostrarPuntuacion(jugadoresLeidos[i]);
  	}
