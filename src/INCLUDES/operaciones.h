@@ -4,7 +4,7 @@
 	#include "../INCLUDES/preguntas_respuestas.h"
 	#include "../INCLUDES/jugador.h"
 
-	t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunta_respuestas* *preguntasSalidas, int sizePreguntasSalidas, int sizeTotalPreguntas);
+	t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunta_respuestas* *preguntasSalidas, int* sizePreguntasSalidas, int sizeTotalPreguntas);
 	int comprobarRespuesta(char* respuesta);
 	int maxPreguntas (int cantPreguntas, int sizeTotalPreguntas);
 	void ordenarJugadores(t_jugador* jugadoresLeidos, int size);

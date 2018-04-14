@@ -217,7 +217,7 @@ int main(int argc, char** argv)
 
  	for(int i=0; i<cant_preguntas; i++)
  	{
- 		 pregunta = generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
+ 		 pregunta = generarPregunta (arrPreg, &preguntasSalidas, &sizePreguntasSalidas, sizeTotalPreguntas);
 		 mostrarPregunta(pregunta);
 		 mostrarRespuestas(pregunta);
 		 respValida = recogerRespuesta(&respuesta);
@@ -439,7 +439,7 @@ void multijugador()
  		{
  			mostrarMensaje("\nPregunta para el jugador #");mostrarInt(j+1);mostrarMensaje("->"); mostrarMensaje(multijugadores[j].nick);
  			//Preparar la pregunta aleatoria para el jugador
- 			pregunta = generarPregunta (arrPreg, &preguntasSalidas, sizePreguntasSalidas, sizeTotalPreguntas);
+ 			pregunta = generarPregunta (arrPreg, &preguntasSalidas, &sizePreguntasSalidas, sizeTotalPreguntas);
 
 			 mostrarPregunta(pregunta);
 			 mostrarRespuestas(pregunta);
