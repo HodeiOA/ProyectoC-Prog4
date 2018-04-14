@@ -502,14 +502,11 @@ void multijugador()
 
  void acabar()//método para liberar recursos
  {
- 	guardarJugadores(listaTodosJugadores, (*numJugadores));
-
- 	free(numJugadores);
- 	numJugadores = NULL;
-
- 	free(preguntasSalidas);
+ 	/*free(preguntasSalidas);
  	preguntasSalidas = NULL;
  	
  	free(arrPreg);
- 	arrPreg = NULL;
+ 	arrPreg = NULL;*/
+
+ 	guardarJugadores(listaTodosJugadores, (*numJugadores));
  }
