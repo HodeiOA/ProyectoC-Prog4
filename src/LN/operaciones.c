@@ -7,7 +7,7 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 {
 	int random = 0;
 	t_pregunta_respuestas pregunta;
-	int repetida = 0;
+	int repetida = 1;
 	int cont = 0;
 	int MAX_INTENTOS = 20;
 	t_pregunta_respuestas *aux;
