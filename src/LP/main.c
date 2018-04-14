@@ -321,7 +321,7 @@ void multijugador()
  	recogerInt(&cantPreg);
  	cantidadPreguntasValida = maxPreguntas (cantJugadores*cantPreg, sizeTotalPreguntas);
 
-	while(cantJugadores<1 || cantidadPreguntasValida == 0)
+	while(cantPreg<1 || cantidadPreguntasValida == 0)
  	{
  		mostrarMensaje("El número introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida. \n");
  		mostrarMensaje("Por favor, intoduce cuántas preguntas deseas que se le realicen a cada jugador: \t");
