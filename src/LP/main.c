@@ -386,7 +386,6 @@ void multijugador()
 	 		actualizarPuntuacion(&multijugadores[i], 1);
 	 	}
 
-	 actualizarPuntuacion(multijugadores, cantJugadores);
 	  for (int i=0; i<cantJugadores; i++)
 	 {
 	 	multijugadores[i].puntuacion = 0;
