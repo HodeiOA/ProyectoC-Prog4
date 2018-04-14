@@ -7,7 +7,7 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 {
 	int random = 0;
 	t_pregunta_respuestas pregunta;
-	int repetida = 1;
+	int repetida = 0;
 	int cont = 0;
 	int MAX_INTENTOS = 20;
 	t_pregunta_respuestas *aux;
@@ -22,10 +22,6 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 		 			if(strcmp (pregunta.Pregunta, preguntasSalidas[j]->Pregunta) == 0)
 		 			{
 		 				repetida = 1; //si son iguales, será 1
-		 			}
-		 			else
-		 			{
-		 				repetida = 0;
 		 			}
 		 		}
 
