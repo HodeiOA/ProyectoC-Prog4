@@ -367,6 +367,15 @@ void multijugador()
 	 		{
 	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si así deshacen el empate
 		 		RealizarPreguntasMultijugador(empatados, 1, sizeEmpatados);
+		 		c=0;
+		 		for (int i = 0; i < cantJugadores; ++i)
+		 		{
+		 			if(strcmp(multijugadores[i].nick, empatados[c].nick)==0)
+		 			{
+		 				multijugadores[i].puntuacion = empatados[c].puntuacion;
+		 				c++;
+		 			}
+		 		}
 	 		}
 	 		else
 	 		{
