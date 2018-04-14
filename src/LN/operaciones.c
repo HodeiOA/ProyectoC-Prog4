@@ -23,6 +23,10 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 		 			{
 		 				repetida = 1; //si son iguales, será 1
 		 			}
+		 			else
+		 			{
+		 				repetida = 0;
+		 			}
 		 		}
 
 		 	cont++;
