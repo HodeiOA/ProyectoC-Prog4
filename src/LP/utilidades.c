@@ -71,7 +71,7 @@ void mensajeGanador(t_jugador ganador) //A este método se le llamará antes de 
 	printf("El jugador ganador de esta partida ha sido %s con %i puntos. ¡Enhorabuena! \n", ganador.nick, ganador.puntuacion );
 }
 
-void mensajeEmpate(t_jugador* empatados, int sizeEmpatados)//Recibe una lista con los jugadores que han empatado
+void mensajeEmpate(t_jugador* empatados, int sizeEmpatados, int *opcion)//Recibe una lista con los jugadores que han empatado
 {
 	char* nicks_empate;
 
@@ -82,6 +82,7 @@ void mensajeEmpate(t_jugador* empatados, int sizeEmpatados)//Recibe una lista co
 		printf("%s\n", empatados[i].nick);
 	}
 	printf("Si deseas desempatar pulsa 1\nSi deseas finalizar la partida con empate pulsa 2\n");
+	recogerInt(opcion);
 }
 //-----------------------------------------------------------------
 

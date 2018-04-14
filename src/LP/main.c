@@ -360,8 +360,7 @@ void multijugador()
 					c++;
 				}
 	 		}
-	 		mensajeEmpate(empatados, sizeEmpatados);
-	 		recogerInt(&opcion);
+	 		mensajeEmpate(empatados, sizeEmpatados, &opcion);
 	 		
 	 		if(opcion ==1)
 	 		{
