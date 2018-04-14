@@ -300,6 +300,7 @@ void multijugador()
  		mostrarMensaje("El número introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles. \n");
  		mostrarMensaje("Por favor, intoduce cuántos jugadores van a jugar: \t");
  		recogerInt(&cantJugadores);
+ 		cantidadPreguntasValida = maxPreguntas (cantJugadores, sizeTotalPreguntas);
  	}
  	//ARRAY CON LOS JUGADORES DE ESTA PARTIDA: Lo creamos aquí para poder hacerlo estático, ya que aquí ya sabemos la cantidad de jugadores
  	t_jugador multijugadores[cantJugadores];
@@ -326,6 +327,7 @@ void multijugador()
  		mostrarMensaje("El número introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida. \n");
  		mostrarMensaje("Por favor, intoduce cuántas preguntas deseas que se le realicen a cada jugador: \t");
  		recogerInt(&cantPreg);
+ 		cantidadPreguntasValida = maxPreguntas (cantJugadores*cantPreg, sizeTotalPreguntas);
  	}
 
  	RealizarPreguntasMultijugador(multijugadores, cantPreg, cantJugadores);
