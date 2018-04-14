@@ -22,11 +22,17 @@ t_pregunta_respuestas* preguntasSalidas;
 //Lista de todas las preguntas
 t_pregunta_respuestas* arrPreg;
 
+t_jugador* listaTodosJugadores;
+int* numJugadores;
+
 //Jugador que inicia la partida
 t_jugador jugadorPrincipal;
 
 int main(int argc, char** argv)
 {
+	numJugadores = (int*) malloc(sizeof(int));
+	(*numJugadores) = numJugadoresTotal();
+	listaTodosJugadores = leerJugadores();
 
   sizeTotalPreguntas = numPreguntasEnFichero(); 
   arrPreg = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas) * sizeTotalPreguntas);
@@ -258,7 +264,7 @@ int main(int argc, char** argv)
 	 mostrarMensaje("Introduce la opción deseada:  ");
 	 recogerInt (&opcion);
 
-	 actualizarPuntuacion(&jugadorPrincipal,1);
+	 listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, numJugadores, &jugadorPrincipal, 1);
 	 jugadorPrincipal.puntuacion = 0;
 
 	 while(opcion != 1 && opcion != 2)
@@ -392,7 +398,7 @@ void multijugador()
 	 		{
 	 			mensajeGanador(multijugadores[i]);
 	 		}
-	 		actualizarPuntuacion(&multijugadores[i], 1);
+	 		listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, numJugadores, multijugadores, cantJugadores);
 	 	}
 
 	  for (int i=0; i<cantJugadores; i++)
@@ -481,28 +487,29 @@ void multijugador()
 
   void ranking()
  {
- 	t_jugador* jugadoresLeidos; //lista de todos los jugadores que ha habido en todas las partidas(no solo los de esta)
- 	int sizeJugadoresLeidos;
- 	//Llamar a data y leer todos los jugadores en el fichero
- 	jugadoresLeidos = leerJugadores();
- 	sizeJugadoresLeidos =  numJugadoresTotal();
- 	ordenarJugadores(jugadoresLeidos, sizeJugadoresLeidos);
+ 	ordenarJugadores(listaTodosJugadores, (*numJugadores));
 
  	mostrarMensaje("RANKING DE JUGADORES");
- 	for(int i=0; i<sizeJugadoresLeidos; i++)
+ 	for(int i=0; i < (*numJugadores); i++)
  	{
  		mostrarMensaje("\n");
  		mostrarInt(i+1);
  		mostrarMensaje(".-");
- 		mostrarPuntuacion(jugadoresLeidos[i]);
+ 		mostrarPuntuacion(listaTodosJugadores[i]);
  	}
 	 menuJugador();
  }
 
  void acabar()//método para liberar recursos
  {
+ 	guardarJugadores(listaTodosJugadores, (*numJugadores));
+
+ 	free(numJugadores);
+ 	numJugadores = NULL;
+
  	free(preguntasSalidas);
  	preguntasSalidas = NULL;
+ 	
  	free(arrPreg);
  	arrPreg = NULL;
  }

@@ -11,6 +11,6 @@ typedef struct
 t_jugador crearJugador(char* Nick);
 void sumarPunto(t_jugador* Jugador);
 int existeJugador(t_jugador* listaJugadores, char* Nick); // No creo que este deba estar aquí...
-void actualizarPuntuacion(t_jugador* listaJugadores, int numElem);
+t_jugador* actualizarPuntuacion(t_jugador* listaTodosJugadores, int* numTodos, t_jugador* listaJugadoresSesion, int numElem);
 
 #endif
