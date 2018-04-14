@@ -335,6 +335,7 @@ void multijugador()
  	
 	 do
 	 {
+	 	sizeEmpatados = 0;
 	 	puntMaxima = maxPuntuacion(multijugadores, cantJugadores);
 
 	 	for(int i=0; i<cantJugadores; i++)
@@ -367,9 +368,13 @@ void multijugador()
 	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si así deshacen el empate
 		 		RealizarPreguntasMultijugador(empatados, 1, sizeEmpatados);
 	 		}
+	 		else
+	 		{
+	 			sizeEmpatados = 1;
+	 		}
 	 	}	 	
 	 }
-	 while(sizeEmpatados != 1 || opcion==1);//No hay empate
+	 while(sizeEmpatados != 1);//No hay empate
 	 //Si había empate, ya se ha resuelto si así se ha querido. 
 	 //Si no se resolvió, se mostrará un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
 	 	for(int i=0; i<cantJugadores; i++)
@@ -378,6 +383,7 @@ void multijugador()
 	 		{
 	 			mensajeGanador(multijugadores[i]);
 	 		}
+	 		actualizarPuntuacion(&multijugadores[i], 1);
 	 	}
 
 	 actualizarPuntuacion(multijugadores, cantJugadores);
