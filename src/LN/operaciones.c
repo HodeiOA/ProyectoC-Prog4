@@ -7,59 +7,77 @@ t_pregunta_respuestas generarPregunta (t_pregunta_respuestas *arrPreg, t_pregunt
 {
 	int random = 0;
 	t_pregunta_respuestas pregunta;
-	int repetida = 1;
+	int repetida = 0;
 	int cont = 0;
 	int MAX_INTENTOS = 20;
 	t_pregunta_respuestas *aux;
 
-	 	do
-	 	{
-		 		repetida = 0;
-		 		random = rand() %(sizeTotalPreguntas); //genera un número aleatorio entre 0 y sizeTotalPreguntas-1
-		 		pregunta = arrPreg[random];
-		 		for(int j = 0; j < (*sizePreguntasSalidas); j++)
-		 		{
-		 			//si son iguales, será 0
-		 			if(strcmp (pregunta.Pregunta, preguntasSalidas[j]->Pregunta) == 0)
-		 			{
-		 				repetida = 1; //si son iguales, será 1
-		 			}
-		 		}
+	if(*sizePreguntasSalidas == 0)
+	{
+		repetida = 0;
+		random = rand() %(sizeTotalPreguntas); //genera un número aleatorio entre 0 y sizeTotalPreguntas-1
+		pregunta = arrPreg[random];
+		t_pregunta_respuestas aux [1];
+		aux[0] = pregunta;
+		free(*preguntasSalidas);
+		*preguntasSalidas = NULL;
+		*preguntasSalidas = (t_pregunta_respuestas*) malloc (sizeof(t_pregunta_respuestas));
+		(*preguntasSalidas)[0] = pregunta;
+	}
+	else
+	{
+		
+		 	do
+		 	{
+			 		repetida = 0;
+			 		random = rand() %(sizeTotalPreguntas); //genera un número aleatorio entre 0 y sizeTotalPreguntas-1
+			 		pregunta = arrPreg[random];
+			 		
+				 		for(int j = 0; j < *sizePreguntasSalidas; j++)
+				 		{
+				 			
+				 			//si son iguales, será 0
+				 			if(strcmp (pregunta.Pregunta, (*preguntasSalidas)[j].Pregunta) == 0)
+				 			{
+				 				repetida = 1; //si son iguales, será 1
+				 			}
+				 		}
+				 	
+			 	cont++;
+		 	}
+		 	while(repetida == 1 && cont < MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
 
-		 	cont++;
-	 	}
-	 	while(repetida == 1 || cont < MAX_INTENTOS); //Hará esto hasta que encuentre una pregunta no repetida o agote la cantidad de intentos
-
-	 aux = (t_pregunta_respuestas*) malloc (((*sizePreguntasSalidas)+1) * sizeof(t_pregunta_respuestas));
-	 //creamos espacio para las preguntas ya salidas +1 (la nueva)
+		 
+		 aux = (t_pregunta_respuestas*) malloc ((*sizePreguntasSalidas+1) * sizeof(t_pregunta_respuestas));
+		 //creamos espacio para las preguntas ya salidas +1 (la nueva)
+		
+		//metemos todas las preguntas del array de los ya salidos en la variable auxiliar
+		 for (int i=0; i<(*sizePreguntasSalidas); i++)
+		 {
+		 	strcpy(aux[i].Pregunta,(*preguntasSalidas)[i].Pregunta);
+		 	
+		 }
+		 aux[*sizePreguntasSalidas] = pregunta;//Añadimos la pregunta en la variable auxiliar
+		
+		 free (*preguntasSalidas);
+		 *preguntasSalidas = NULL;
+		 //Hacemos malloc de preguntasSalidas otra vez para darles espacio para un hueco más
+		  *preguntasSalidas = (t_pregunta_respuestas*) malloc ((*sizePreguntasSalidas+1) * sizeof(t_pregunta_respuestas));
+		
+		 for (int i = 0; i<(*sizePreguntasSalidas+1); i++)
+		 {
+		 	(*preguntasSalidas )[i] = aux[i]; 
+		 }
+	}
 	
-	//metemos todas las preguntas del array de los ya salidos en la variable auxiliar
-	 for (int i=0; i<(*sizePreguntasSalidas); i++)
-	 {
-	 	aux[i] = *preguntasSalidas [i];
-	 }
-	 aux[(*sizePreguntasSalidas)] = pregunta;//Añadimos la pregunta en la variable auxiliar
-	
-	 free (*preguntasSalidas);
-	 *preguntasSalidas = NULL;
-
-	 //Hacemos malloc de preguntasSalidas otra vez para darles espacio para un hueco más
-	 *preguntasSalidas = (t_pregunta_respuestas*) malloc (((*sizePreguntasSalidas)+1) * sizeof(t_pregunta_respuestas));
-	
-	 for (int i = 0; i<((*sizePreguntasSalidas) + 1); i++)
-	 {
-	 	*preguntasSalidas [i] = aux[i]; 
-	 }
-
 	 //nos libramos de aux porque ya no nos hace falta
 	 free(aux);
 	 aux = NULL;
-
 	 prepararRespuestas(&pregunta);
-
+	 
+	 *sizePreguntasSalidas +=1;
 	 return pregunta;
 }
-
 
 //Verificar si la respuesta elegida es la correcta
 //(ver si la respuesta a la que se le ha asignado el valor de la letra que se ha elegido empieza por punto)
