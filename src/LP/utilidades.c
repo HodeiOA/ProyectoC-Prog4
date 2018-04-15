@@ -1,7 +1,5 @@
 #include "../INCLUDES/utilidades.h"
 
-
-
 void mostrarMensaje(char* str)
 {
 	printf("%s",str );
@@ -12,7 +10,7 @@ void mostrarInt(int i)
 	printf("%i",i );
 }
 
-//--Compilan, pero habrá que probarlos cuando sus clases estén hechas
+//--Compilan, pero habra que probarlos cuando sus clases esten hechas
 void mostrarPregunta(t_pregunta_respuestas preg)
 {
 	printf("\n%s\n", preg.Pregunta);
@@ -65,8 +63,7 @@ void mostrarPuntuacion(t_jugador jugador)
 {
 	printf("%s : %i puntos\n", jugador.nick, jugador.puntuacion );
 }
-
-void mensajeGanador(t_jugador ganador) //A este método se le llamará antes de actualizar las puntuaciones, con lo que la puntuación será la acumulada en esa partida
+void mensajeGanador(t_jugador ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
 {
 	printf("El jugador ganador de esta partida ha sido %s con %i puntos. ¡Enhorabuena! \n", ganador.nick, ganador.puntuacion );
 }
@@ -86,7 +83,7 @@ void mensajeEmpate(t_jugador* empatados, int sizeEmpatados, int *opcion)//Recibe
 }
 //-----------------------------------------------------------------
 
-// Al usar los siguientes métodos, como parámetro pasar &variable--------------
+// Al usar los siguientes metodos, como parametro pasar &variable--------------
 void recogerString (char** punt_string, int max_long)
 {
 	char str[max_long];
@@ -97,16 +94,14 @@ void recogerString (char** punt_string, int max_long)
 	sscanf(str, "%[^\n]", str_sin_salto_linea); //eliminar el \n final
 	
 	//reservar solo el espacio necesario para el string
-    (*punt_string) = (char *)malloc((strlen(str_sin_salto_linea)) * sizeof(char)); //El último espacio será para el \0
+    (*punt_string) = (char *)malloc((strlen(str_sin_salto_linea)) * sizeof(char)); //El último espacio sera para el \0
     strcpy((*punt_string), str_sin_salto_linea );
-    //Esta línea no va y no sé por qué
-  //	(*punt_string)[strlen(str_sin_salto_linea)-1] ="\0"; //Le ponemos \0 al final para que sea un string
 }
 
 void recogerNick (char** punt_nick)
 {
-	printf("Indica el nick del jugador: \n");
-	recogerString(punt_nick, 20);//los nicks tendrán un máximo de 20 caracteres
+	printf("\n Indica el nick del jugador: \n");
+	recogerString(punt_nick, 20);//los nicks tendran un maximo de 20 caracteres
 }
 
 void recogerInt (int* punt_numero)
@@ -119,7 +114,7 @@ void recogerInt (int* punt_numero)
 
 
 /*
-El método recibe la variable en la que guardaremos el resultado introducido por el usuario (a, b o c, ya que todas las preguntas tendrán tres opciones)
+El metodo recibe la variable en la que guardaremos el resultado introducido por el usuario (a, b o c, ya que todas las preguntas tendran tres opciones)
 Devolverá un int indicando si la opción introducida concuerda con alguna de las tres letras (0: si es una respuesta posible, -1: si es una respuesta no posible)
 */
 int recogerRespuesta (char* respuesta) 
@@ -132,7 +127,7 @@ int recogerRespuesta (char* respuesta)
 	
 	if((*respuesta)!='a' && (*respuesta)!='b' && (*respuesta)!='c') 
 	{
-		printf("La respuesta no es válida. Por favor, introduce una opción válida (a, b o c) \n");
+		printf("La respuesta no es valida. Por favor, introduce una opción valida (a, b o c) \n");
 		error=-1;
 	}
 	return error;

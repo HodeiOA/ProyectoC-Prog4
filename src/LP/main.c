@@ -5,7 +5,7 @@
 #include "../INCLUDES/operaciones.h"
 #include <string.h>
 
-//Declaración de métodos
+//Declaracion de MeTODOS
 void menuAdmin();
 void menuJugador();
 void individual();
@@ -15,8 +15,8 @@ void acabar();
 void RealizarPreguntasMultijugador(t_jugador* multijugadores, int cantPreg, int cantJugadores);
 
 //Tamaños de las listas
-int sizeTotalPreguntas; //igualarlo a un método de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
-int sizePreguntasSalidas = 0; //Empezará siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
+int sizeTotalPreguntas; //igualarlo a un metodo de data que cuente la cantidad de preguntas en el fichero (lo mimso que leer pero con un contador en el while)
+int sizePreguntasSalidas = 0; //Empezara siendo 0 y lo incrementaremos cada vez que se haga una nueva pregunta
 
 t_pregunta_respuestas* preguntasSalidas;
 //Lista de todas las preguntas
@@ -58,11 +58,11 @@ int main(int argc, char** argv)
   	}
   	else
   	{
-	  	//Antes de mostrar el menú, como es la primera vez, hacemos que se identifique
+	  	//Antes de mostrar el menu, como es la primera vez, hacemos que se identifique
 	  	char* nick;
 	  	recogerNick(&nick);
 	 	jugadorPrincipal = crearJugador(nick);
-
+	 	mostrarMensaje("Hola "); mostrarMensaje(nick); mostrarMensaje("!");
 	    menuJugador();
 	    //asignarle nick al jugador
 	}
@@ -75,7 +75,7 @@ int main(int argc, char** argv)
  {
  	 mostrarMensaje("Hola, administrador\n"); 
 
-  	//Todo irá dentro de un do-while, ya que al menos una vez se realizará y según lo el valor que le dé a la variable "opción" saldrá o no del bucle
+  	//Todo ira dentro de un do-while, ya que al menos una vez se realizara y segun lo el valor que le de a la variable "opcion" saldra o no del bucle
   	int opcion=0;
 
    do
@@ -89,7 +89,7 @@ int main(int argc, char** argv)
 	   
 	    while(cant_p<=0)
 	    {
-	    	mostrarMensaje("El número de preguntas debe ser superior a 0. Por favor, inténtalo de nuevo: \n");
+	    	mostrarMensaje("El numero de preguntas debe ser superior a 0. Por favor, intentalo de nuevo: \n");
 	    	recogerInt(&cant_p); 
 	    }
 
@@ -107,7 +107,7 @@ int main(int argc, char** argv)
 	    	recogerString(&pregunta, MAX_PREG);
 
 	    		
-	    	 mostrarMensaje("\n*La respuesta no debe contener la letra de la opción (a, b, c) ni signos de puntuación al inicio (salvo que se trate de un guión, por ser la respuesta un número negativo)");
+	    	 mostrarMensaje("\n*La respuesta no debe contener la letra de la opcion (a, b, c) ni signos de puntuacion al inicio (salvo que se trate de un guion, por ser la respuesta un numero negativo)");
 	    	 mostrarMensaje("\nIntroduce la respuesta correcta: ");
 	    	 recogerString(&correcta, MAX_RESP);
 
@@ -134,8 +134,8 @@ int main(int argc, char** argv)
 	    }
 	    guardarPreguntaRespuestas(preg_r, cant_p);
 
-	    mostrarMensaje("\n¿Quieres seguir introduciendo preguntas?\n");
- 		mostrarMensaje("\t1.- Sí\n");
+	    mostrarMensaje("\n Quieres seguir introduciendo preguntas?\n");
+ 		mostrarMensaje("\t1.- Si\n");
  		mostrarMensaje("\t2.- No\n");
  		recogerInt(&opcion);
 
@@ -146,36 +146,36 @@ int main(int argc, char** argv)
  {
  	int opcion;
 	
- 	 mostrarMensaje("----MENÚ----\n"); 
+ 	 mostrarMensaje("\n\n\n----MENU----\n"); 
  	 mostrarMensaje("Por favor, elije una de las siguientes opciones:\n"); 
  	 mostrarMensaje("\t 1.- Jugar partida individual\n"); 
  	 mostrarMensaje("\t 2.- Jugar partida multijugador\n"); 
- 	 mostrarMensaje("\t 3.- Ver ránking\n"); 
+ 	 mostrarMensaje("\t 3.- Ver ranking\n"); 
  	 mostrarMensaje("\t 4.- Salir \n"); 
- 	 mostrarMensaje("Indica el número de la opción que quieres elegir\n"); 
+ 	 mostrarMensaje("Indica el numero de la opcion que quieres elegir\n"); 
  
   	recogerInt (&opcion);
 
 	while(!(opcion>0 && opcion<5))
   	{
-  		mostrarMensaje("Opción no válida. Por favor, indica el número de la opción que quieres elegir\n"); 
+  		mostrarMensaje("Opcion no valida. Por favor, indica el numero de la opcion que quieres elegir\n"); 
   		recogerInt (&opcion);
   	}
 
   	switch(opcion)
   	{
   		case 1: 
-  		mostrarMensaje("Has elegido la opción número 1: Jugar partida individual \n"); 
+  		mostrarMensaje("Has elegido la opcion numero 1: JUGAR PARTIDA INDIVIDUAL \n"); 
   		individual();
   		break;
 
   		case 2:
-  		mostrarMensaje("Has elegido la opción número 2: Jugar partida multijugador \n"); 
+  		mostrarMensaje("Has elegido la opcion numero 2: JUGAR PARTIDA MULTIJUGADOR \n"); 
   		multijugador();
   		break;
 
   		case 3:
-  		mostrarMensaje("Has elegido la opción número 3: Ver ránking\n"); 
+  		mostrarMensaje("Has elegido la opcion numero 3: VER RANKING\n"); 
   		ranking();
   		break;
 
@@ -198,7 +198,7 @@ int main(int argc, char** argv)
  	//t_pregunta_respuestas* arrPreg; //todas las preguntas guardadas en el fichero
  	t_pregunta_respuestas* aux; //Este es un array auxiliar para poder ir añadiendo las preguntas que vayan saliendo
  	t_pregunta_respuestas pregunta;
- 	int random;//variable en la que guardaremos el número aleatorio para elegir una pregunta aleatoria
+ 	int random;//variable en la que guardaremos el numero aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	int cantidadPreguntasValida = 0; //Variable para ver si se ha pasado o no con la cantidad de preguntas
  	int cont=0;
@@ -206,17 +206,16 @@ int main(int argc, char** argv)
  	int respCorrecta;
  	char respuesta;
 
- 	int opcion; //Para la elección del final
+ 	int opcion; //Para la eleccion del final
 
- 	mostrarMensaje("\t Juego individual");
- 	mostrarMensaje("¿Cuántas preguntas deseas que se te realicen?\t");
+ 	mostrarMensaje("\n Cuantas preguntas deseas que se te realicen?\t");
  	recogerInt(&cant_preguntas);
 
  	cantidadPreguntasValida = maxPreguntas (cant_preguntas, sizeTotalPreguntas);
  	
  	while(cant_preguntas<0 || cantidadPreguntasValida == 0)
  	{
-		mostrarMensaje("El número de preguntas no es válido (porque es muy elevado o porque no es mayor a 0)\n Por favor, introduce otro número: \t");
+		mostrarMensaje("El numero de preguntas no es valido (porque es muy elevado o porque no es mayor a 0)\n Por favor, introduce otro numero: \t");
  		recogerInt(&cant_preguntas);
  		cantidadPreguntasValida = maxPreguntas (cant_preguntas, sizeTotalPreguntas);
  	}
@@ -232,7 +231,7 @@ int main(int argc, char** argv)
 		 {
 		 	 respValida = recogerRespuesta(&respuesta);
 		 }
-	 //LLAMAR AL MÉTODO DE OPERACIONES QUE COMPRUEBA SI LA RESPUESTA ES CORRECTA O NO
+	 //LLAMAR AL MeTODO DE OPERACIONES QUE COMPRUEBA SI LA RESPUESTA ES CORRECTA O NO
 		switch (respuesta)
 		{
 			case 'a':
@@ -258,10 +257,10 @@ int main(int argc, char** argv)
 		 	mostrarMensaje("Respuesta incorrecta\n");
 		 }
 	 }
-	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");
-	 mostrarMensaje("1.- Volver a jugar\n");
-	 mostrarMensaje("2.- Volver al menú\n");
-	 mostrarMensaje("Introduce la opción deseada:  ");
+	 mostrarMensaje("\n ---Fin de la partida---\n  Deseas volver a jugar o regresar al menu?");
+	 mostrarMensaje("\n1.- Volver a jugar\n");
+	 mostrarMensaje("\n2.- Volver al menu\n");
+	 mostrarMensaje("\nIntroduce la opcion deseada:  ");
 	 recogerInt (&opcion);
 
 	 listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, numJugadores, &jugadorPrincipal, 1);
@@ -269,7 +268,7 @@ int main(int argc, char** argv)
 
 	 while(opcion != 1 && opcion != 2)
 	 {
-	 	 mostrarMensaje("\nLa opción introducida no es válida. Por favor, inténtalo de nuevo:  ");
+	 	 mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
 	 	 recogerInt (&opcion);
 	 }
 
@@ -296,19 +295,18 @@ void multijugador()
 
  	char* aux;
 
- 	mostrarMensaje("\t Juego multijugador");
- 	mostrarMensaje("¿Cuántos jugadores van a jugar?\t");
+ 	mostrarMensaje("\n Cuantos jugadores van a jugar?\t");
  	recogerInt(&cantJugadores);
 
  	cantidadPreguntasValida = maxPreguntas (cantJugadores, sizeTotalPreguntas);
  	while(cantJugadores<2 ||  cantidadPreguntasValida == 0)
  	{
- 		mostrarMensaje("El número introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles. \n");
- 		mostrarMensaje("Por favor, intoduce cuántos jugadores van a jugar: \t");
+ 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 2 o por exceder la cantidad de preguntas disponibles. \n");
+ 		mostrarMensaje("\nPor favor, intoduce cuantos jugadores van a jugar: \t");
  		recogerInt(&cantJugadores);
  		cantidadPreguntasValida = maxPreguntas (cantJugadores, sizeTotalPreguntas);
  	}
- 	//ARRAY CON LOS JUGADORES DE ESTA PARTIDA: Lo creamos aquí para poder hacerlo estático, ya que aquí ya sabemos la cantidad de jugadores
+ 	//ARRAY CON LOS JUGADORES DE ESTA PARTIDA: Lo creamos aqui para poder hacerlo estatico, ya que aqui ya sabemos la cantidad de jugadores
  	t_jugador multijugadores[cantJugadores];
 
  	//El primer jugador es el actual 
@@ -318,26 +316,26 @@ void multijugador()
  	mostrarMensaje("Introduce los nombres de los jugadores contra los que vas a jugar:");
  	for (int i = 1; i < cantJugadores; ++i) //Empezamos el bucle desde 1 porque el 0 ya lo hemos cubierto
  	{
- 		mostrarMensaje("J");mostrarInt(i+1);mostrarMensaje(":  "); //Para que aparezca como JX: 
+ 		mostrarMensaje("\n\nJ");mostrarInt(i+1);mostrarMensaje(":  "); //Para que aparezca como JX: 
  		recogerNick (&aux);
  		multijugadores[i]= crearJugador(aux);
  		multijugadores[i].puntuacion =0;
  	}
 
- 	mostrarMensaje("¿Cuántas preguntas deseas que se le realicen a cada jugador?\t");
+ 	mostrarMensaje(" Cuantas preguntas deseas que se le realicen a cada jugador?\t");
  	recogerInt(&cantPreg);
  	cantidadPreguntasValida = maxPreguntas (cantJugadores*cantPreg, sizeTotalPreguntas);
 
 	while(cantPreg<1 || cantidadPreguntasValida == 0)
  	{
- 		mostrarMensaje("El número introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida. \n");
- 		mostrarMensaje("Por favor, intoduce cuántas preguntas deseas que se le realicen a cada jugador: \t");
+ 		mostrarMensaje("El numero introducido es incorrecto (o por ser inferior a 1 o por exceder la cantidad de preguntas disponibles para la cantidad de jugadores elegida. \n");
+ 		mostrarMensaje("Por favor, intoduce cuantas preguntas deseas que se le realicen a cada jugador: \t");
  		recogerInt(&cantPreg);
  		cantidadPreguntasValida = maxPreguntas (cantJugadores*cantPreg, sizeTotalPreguntas);
  	}
 
  	RealizarPreguntasMultijugador(multijugadores, cantPreg, cantJugadores);
- 	//Comprobar si se han producido empates. Solo se desharán los empates si se dan entre quienes hayan ganado
+ 	//Comprobar si se han producido empates. Solo se desharan los empates si se dan entre quienes hayan ganado
  	
 	 do
 	 {
@@ -354,7 +352,7 @@ void multijugador()
 
 	 	if(sizeEmpatados > 1)
 	 	{
-	 		//si hay empate, damos la opción de desempatar opción de desmpatar
+	 		//si hay empate, damos la opcion de desempatar opcion de desmpatar
 	 		//1.- Recoger los jugadores que han empatado 
 	 		t_jugador empatados[sizeEmpatados];
 	 		int c = 0;
@@ -371,7 +369,7 @@ void multijugador()
 	 		
 	 		if(opcion ==1)
 	 		{
-	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si así deshacen el empate
+	 			//Realizamos una sola pregunta entre los jugadores que han empatado para ver si asi deshacen el empate
 		 		RealizarPreguntasMultijugador(empatados, 1, sizeEmpatados);
 		 		c=0;
 		 		for (int i = 0; i < cantJugadores; ++i)
@@ -390,8 +388,8 @@ void multijugador()
 	 	}	 	
 	 }
 	 while(sizeEmpatados != 1);//No hay empate
-	 //Si había empate, ya se ha resuelto si así se ha querido. 
-	 //Si no se resolvió, se mostrará un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
+	 //Si habia empate, ya se ha resuelto si asi se ha querido. 
+	 //Si no se resolvio, se mostrara un mensaje de ganador por cada uno. Por lo tanto, lo hacemos en un for:
 	 	for(int i=0; i<cantJugadores; i++)
 	 	{
 	 		if(multijugadores[i].puntuacion == puntMaxima)
@@ -406,16 +404,16 @@ void multijugador()
 	 	multijugadores[i].puntuacion = 0;
 	 }
 
-	 //Volver al menú o volver a jugar
-	 mostrarMensaje("Fin de la partida\n ¿Deseas volver a jugar o regresar al menú?");
+	 //Volver al menu o volver a jugar
+	 mostrarMensaje("Fin de la partida\n  Deseas volver a jugar o regresar al menu?");
 	 mostrarMensaje("1.- Volver a jugar\n");
-	 mostrarMensaje("2.- Volver al menú\n");
-	 mostrarMensaje("Introduce la opción deseada:  ");
+	 mostrarMensaje("2.- Volver al menu\n");
+	 mostrarMensaje("Introduce la opcion deseada:  ");
 	 recogerInt (&opcion);
 
 	 while(opcion != 1 && opcion != 2)
 	 {
-	 	 mostrarMensaje("\nLa opción introducida no es válida. Por favor, inténtalo de nuevo:  ");
+	 	 mostrarMensaje("\nLa opcion introducida no es valida. Por favor, intentalo de nuevo:  ");
 	 	 recogerInt (&opcion);
 	 }
 
@@ -433,7 +431,7 @@ void multijugador()
  {
  	int cont=0;
  	int respValida=-1;
- 	int random;//variable en la que guardaremos el número aleatorio para elegir una pregunta aleatoria
+ 	int random;//variable en la que guardaremos el numero aleatorio para elegir una pregunta aleatoria
  	int repetida = 0; //Variable para ver si en cada momento la pregunta elegida aleatoriamente es i no alguna que ya ha salido
  	t_pregunta_respuestas pregunta;
  	char respuesta;
@@ -489,7 +487,7 @@ void multijugador()
  {
  	ordenarJugadores(listaTodosJugadores, (*numJugadores));
 
- 	mostrarMensaje("RANKING DE JUGADORES");
+ 	mostrarMensaje("\n\nRANKING DE JUGADORES");
  	for(int i=0; i < (*numJugadores); i++)
  	{
  		mostrarMensaje("\n");
@@ -497,10 +495,11 @@ void multijugador()
  		mostrarMensaje(".-");
  		mostrarPuntuacion(listaTodosJugadores[i]);
  	}
+ 		mostrarMensaje("\n\n");
 	 menuJugador();
  }
 
- void acabar()//método para liberar recursos
+ void acabar()//metodo para liberar recursos
  {
  	/*free(preguntasSalidas);
  	preguntasSalidas = NULL;
