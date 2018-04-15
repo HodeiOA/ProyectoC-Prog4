@@ -405,7 +405,7 @@ void multijugador()
 	 }
 
 	 //Volver al menu o volver a jugar
-	 mostrarMensaje("Fin de la partida\n  Deseas volver a jugar o regresar al menu?");
+	 mostrarMensaje("Fin de la partida\n  Deseas volver a jugar o regresar al menu?\n");
 	 mostrarMensaje("1.- Volver a jugar\n");
 	 mostrarMensaje("2.- Volver al menu\n");
 	 mostrarMensaje("Introduce la opcion deseada:  ");
