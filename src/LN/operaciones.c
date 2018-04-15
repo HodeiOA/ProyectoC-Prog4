@@ -133,7 +133,7 @@ int maxPreguntas (int cantPreguntas, int sizeTotalPreguntas)
       //comparar cada elemento con todos los demás
       for(int j = 0; j < size-1-i; j++)
       {
-        if(jugadoresLeidos[j].puntuacion > jugadoresLeidos[j+1].puntuacion)
+        if(jugadoresLeidos[j].puntuacion < jugadoresLeidos[j+1].puntuacion)
          {
             temp = jugadoresLeidos[j];
             jugadoresLeidos[j] = jugadoresLeidos[j+1];
