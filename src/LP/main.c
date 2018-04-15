@@ -396,7 +396,7 @@ void multijugador()
 	 		{
 	 			mensajeGanador(multijugadores[i]);
 	 		}
-	 		listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, numJugadores, multijugadores, cantJugadores);
+	 		listaTodosJugadores = actualizarPuntuacion(listaTodosJugadores, numJugadores, &multijugadores[i], 1);
 	 	}
 
 	  for (int i=0; i<cantJugadores; i++)

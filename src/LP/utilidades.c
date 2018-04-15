@@ -65,14 +65,14 @@ void mostrarPuntuacion(t_jugador jugador)
 }
 void mensajeGanador(t_jugador ganador) //A este metodo se le llamara antes de actualizar las puntuaciones, con lo que la puntuación sera la acumulada en esa partida
 {
-	printf("El jugador ganador de esta partida ha sido %s con %i puntos. ¡Enhorabuena! \n", ganador.nick, ganador.puntuacion );
+	printf("El jugador ganador de esta partida ha sido %s con %i puntos. Enhorabuena! \n", ganador.nick, ganador.puntuacion );
 }
 
 void mensajeEmpate(t_jugador* empatados, int sizeEmpatados, int *opcion)//Recibe una lista con los jugadores que han empatado
 {
 	char* nicks_empate;
 
-	printf("Se ha producido un empate entre %i jugadores con %i puntos ", sizeEmpatados , empatados[0].puntuacion);
+	printf("\nSe ha producido un empate entre %i jugadores con %i puntos ", sizeEmpatados , empatados[0].puntuacion);
 
 	for(int i=0; i < sizeEmpatados; i++ )
 	{
