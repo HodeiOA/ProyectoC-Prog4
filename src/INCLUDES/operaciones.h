@@ -10,6 +10,4 @@
 	void ordenarJugadores(t_jugador* jugadoresLeidos, int size);
 	int maxPuntuacion(t_jugador* jugadores, int sizeJugadores);
 
-
-
 #endif

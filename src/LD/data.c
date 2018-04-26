@@ -22,13 +22,13 @@ int numJugadoresTotal()
   if(fichero != NULL)
   {
     numElem = fgetc(fichero);
-  } else
+
+    fclose(fichero);
+  }
+  else
   {
     numElem = 0;
   }
-
-  fclose(fichero);
-
   return numElem;
 }
 
@@ -46,9 +46,9 @@ t_jugador* leerJugadores()
     listaJugadores = (t_jugador*) malloc(numElem * sizeof(t_jugador));
 
     fread(listaJugadores, sizeof(t_jugador), numElem, fichero);
-  }
 
-  fclose(fichero);
+      fclose(fichero);
+  }
   
   return listaJugadores;
 }
